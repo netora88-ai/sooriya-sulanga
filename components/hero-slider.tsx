@@ -2,15 +2,16 @@
 
 import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 import hero1 from '../images/hero1.PNG'
 import hero2 from '../images/hero2.PNG'
 import hero3 from '../images/hero3.PNG'
 import hero4 from '../images/hero4.PNG'
+import titleImage from '../images/Sooriya Sulanga Tittle (2).png'
 
 const MotionDiv = motion.div as React.ComponentType<any>
 
 const IMAGES = [
-  hero1.src,
   hero2.src,
   hero3.src,
   hero4.src,
@@ -40,11 +41,15 @@ export default function HeroSlider(){
         />
       </AnimatePresence>
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 pointer-events-none"></div>
 
-      <div className="absolute bottom-12 left-6 text-white z-10">
-        <h2 className="text-4xl font-bold">Sooriya Sulanga</h2>
-        <p className="mt-2 text-gray-300 hidden md:block">සූරිය සුළඟ — A cinematic portrait of memory and longing.</p>
+      <div className="absolute inset-0 flex items-center justify-center z-10 p-6">
+        <Image
+          src={titleImage}
+          alt="Sooriya Sulanga"
+          className="max-h-[60%] w-auto max-w-[90%] object-contain"
+          priority
+        />
       </div>
     </div>
   )

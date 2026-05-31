@@ -17,6 +17,7 @@ import galleryEight from '../images/gallery8.PNG'
 import producerChammika from '../images/producers and director/Chammika De Silva(producer).png'
 import producerManisha from '../images/producers and director/Manisha De Silva(producer).png'
 import directorPriyantha from '../images/producers and director/Priyantha Colombage(director & producer).jpg'
+import titleLogo from '../images/Sooriya Sulanga Tittle (2).png'
 
 const actors = [
   { name: 'Lead Actor 1', role: 'Main character', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&q=80&auto=format&fit=crop' },
@@ -42,26 +43,51 @@ export default function Page(){
 
   return (
     <div>
-      <header className="py-6">
-        <div className="container flex justify-center">
-          <h1 className="text-center text-4xl font-semibold tracking-wide text-white md:text-6xl">සූරිය සුළඟ</h1>
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur-xl">
+        <div className="container flex items-center py-4">
+          <div className="flex w-[140px] shrink-0">
+            <a href="#">
+              <Image src={titleLogo} alt="Sooriya Sulanga" className="h-8 w-auto object-contain" priority />
+            </a>
+          </div>
+          <div className="flex flex-1 items-center justify-center gap-6 overflow-x-auto text-sm font-medium text-gray-300 scrollbar-none md:gap-8">
+            <a href="#trailer" className="shrink-0 transition hover:text-yellow-400">Trailer</a>
+            <a href="#story" className="shrink-0 transition hover:text-yellow-400">Story</a>
+            <a href="#ratings" className="shrink-0 transition hover:text-yellow-400">Ratings</a>
+            <a href="#actors" className="shrink-0 transition hover:text-yellow-400">Actors</a>
+            <a href="#producers" className="shrink-0 transition hover:text-yellow-400">Producers</a>
+            <a href="#gallery" className="shrink-0 transition hover:text-yellow-400">Gallery</a>
+            <a href="#cast-crew" className="shrink-0 transition hover:text-yellow-400">Cast &amp; Crew</a>
+          </div>
+          <div className="flex w-[140px] shrink-0 items-center justify-end gap-3">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="grid h-9 w-9 place-items-center rounded-full bg-white/5 text-gray-400 transition hover:bg-[#1877f2]/15 hover:text-[#1877f2]">
+              <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
+                <path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.2-1.4 1.5-1.4h1.7V4.8c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2v2H8v3.1h2.3V22h3.2z" />
+              </svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="grid h-9 w-9 place-items-center rounded-full bg-white/5 text-gray-400 transition hover:bg-gradient-to-br hover:from-[#f58529] hover:via-[#dd2a7b] hover:to-[#8134af] hover:text-white">
+              <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm8.75 1.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
+              </svg>
+            </a>
+          </div>
         </div>
-      </header>
+      </nav>
 
-      <section className="pb-12">
+      <section className="pt-20 pb-12">
         <HeroSlider />
       </section>
 
-      <section className="container py-10">
+      <section id="trailer" className="container py-10">
         <div>
-          <h3 className="text-xl font-semibold">Trailer</h3>
+          <h2 className="text-center text-3xl font-bold md:text-4xl">Watch Trailer</h2>
           <div className="mt-4 overflow-hidden rounded-[2rem] border border-white/10 bg-black/30 shadow-2xl shadow-black/30">
             <TrailerEmbed videoId="xPFz_NtopJc" />
           </div>
         </div>
       </section>
 
-      <section className="container py-10">
+      <section id="story" className="container py-10">
         <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">
           <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
             <Image
@@ -90,7 +116,7 @@ export default function Page(){
             </ul>
           </div>
 
-          <div className="md:col-span-2 rounded-[2rem] border border-white/10 bg-white/5 p-6">
+          <div id="ratings" className="md:col-span-2 rounded-[2rem] border border-white/10 bg-white/5 p-6">
             <h3 className="text-xl font-semibold">Ratings &amp; Reviews</h3>
             <p className="mt-2 text-sm text-gray-400">Rate the film, leave a comment, and see what others think.</p>
             <div className="mt-4">
@@ -100,7 +126,7 @@ export default function Page(){
         </div>
       </section>
 
-      <section className="container py-10">
+      <section id="actors" className="container py-10">
         <div className="flex items-end justify-between gap-4">
           <div>
             <h2 className="text-2xl font-bold">Actors</h2>
@@ -122,7 +148,7 @@ export default function Page(){
         </div>
       </section>
 
-      <section className="container py-10">
+      <section id="producers" className="container py-10">
         <div className="flex items-end justify-between gap-4">
           <div>
             <h2 className="text-2xl font-bold">Producers &amp; Director</h2>
@@ -170,7 +196,7 @@ export default function Page(){
         </div>
       </section>
 
-      <section className="container py-10">
+      <section id="gallery" className="container py-10">
         <div>
           <h2 className="text-2xl font-bold">Gallery</h2>
           <p className="mt-2 text-sm text-gray-400">Replace these placeholders with film stills, posters, or BTS photos.</p>
@@ -234,7 +260,7 @@ export default function Page(){
         </div>
       </section>
 
-      <section className="container py-10">
+      <section id="cast-crew" className="container py-10">
         <h2 className="text-2xl font-bold">Cast &amp; Crew / ප්‍රධාන කාර්මික ශිල්පී නාමාවලිය</h2>
 
         <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
