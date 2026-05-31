@@ -235,142 +235,138 @@ export default function Page(){
       </section>
 
       <section className="container py-10">
-        <h2 className="text-2xl font-bold">Cast &amp; Crew / රංගන හා තාක්ෂණික කණ්ඩායම</h2>
+        <h2 className="text-2xl font-bold">Cast &amp; Crew / ප්‍රධාන කාර්මික ශිල්පී නාමාවලිය</h2>
 
         <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Executive Producers</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">අධ්‍යක්ෂණය Direction</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>Chathura Ranwala</li>
+              <li>ප්‍රියන්ත කොළඹගේ</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Produced by</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">නිෂ්පාදනය Production</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>Manisha De Silva</li>
-              <li>Chammika De Silva</li>
-              <li>Priyantha Colombage</li>
-              <li>Ranjith Kapukeara</li>
+              <li>මනීෂා ද සිල්වා</li>
+              <li>චම්මික ද සිල්වා</li>
+              <li>ප්‍රියන්ත කොළඹගේ</li>
+              <li>රංජිත් පෙරේරා</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Director</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">සහාය අධ්‍යක්ෂණය Assistant Direction</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>Priyantha Colombage</li>
+              <li>ඩොනල්ඩ් ජයන්ත</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Screenplay</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">කලා අධ්‍යක්ෂණය Art Direction</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>Priyantha Colombage</li>
-              <li>Ranjith Kapukeara</li>
+              <li>ලෙස්ලි විමල් වීරසිංහ</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Music</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">ඇඳුම් නිර්මාණය Costume Design</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>Indunuwan Karunathilaka</li>
-              <li>Kalpana Mihidukula</li>
+              <li>ලසන්ත උඩුකුඹුර</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Singers</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">නර්තන අධ්‍යක්ෂණය Dance Direction</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>Samitha Mudunkotuwa</li>
-              <li>Nadeera Niyathapala</li>
-              <li>Dhanith Sri</li>
+              <li>හර්ෂිකා රත්නායක</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Lyrics</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">සංගීත අධ්‍යක්ෂණය Music Direction</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>Priyantha Colombage</li>
-              <li>Ranjith Kapukeara</li>
-              <li>Saman Edirimuni</li>
+              <li>තිරාන් විජයසිංහ</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Cinematography</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">ශබ්ද සැලසුම්කරණය Sound Design</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>Thusitha Gunawardhana</li>
-            </ul>
-          </div>
-
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Editing</h3>
-            <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>Nadeera Niyathapala</li>
+              <li>තිරාන් විජයසිංහ</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">VFX</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>Dhanushka De Silva</li>
+              <li>දසුන් සඳීප කොළඹගේ</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Drone Photography</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Drone ක්‍රියාකරු Operator</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>Gayan Lakshitha</li>
+              <li>ඇලෙක්ස් කල්ඩෙරා</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Dance Choreography</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Weapon Instructor / Gun Fights Director</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>Harsha Deshapriya</li>
+              <li>අභිත රුවන්ජිත්</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Color Grading</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">අමතර කාර්ය මණ්ඩලය Additional Crew</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>Yapa Gunawardhana</li>
+              <li>ප්‍රියන්ත පතිරණ</li>
+              <li>චාපා පෙරේරා</li>
+              <li>නිරුක්ෂාන් සේනානායක</li>
+              <li>ලක්ෂ්මන් වික්‍රමතිලක</li>
+              <li>සුරාජ් අස්මත්</li>
+              <li>අමිත් විජේසුන්දර</li>
+              <li>ජනක ප්‍රියදර්ශන</li>
+              <li>අශේන් උදුල</li>
+              <li>ප්‍රභාත් දර්ශන</li>
+              <li>හර්ෂිකා රත්නායක</li>
+              <li>එස්. එම්. සුමිත් විජය කුමාර</li>
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Weapon Instructor</h3>
-            <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>Nuwan Abeykoon</li>
-            </ul>
-          </div>
-
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Art Director</h3>
-            <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>Thusitha Gunawardhana</li>
-            </ul>
-          </div>
-
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Makeup</h3>
-            <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>Manjula De Silva</li>
-            </ul>
-          </div>
-
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Costume Design</h3>
-            <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>Nadee Kavidya</li>
-            </ul>
-          </div>
-
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Production Manager</h3>
-            <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>Ranjith Kapukeara</li>
-            </ul>
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-5 md:col-span-2 lg:col-span-3">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">ප්‍රධාන නළු නිළි නාමාවලිය Main Cast</h3>
+            <div className="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+              <ul className="space-y-1 text-sm text-gray-300">
+                <li>මේඝ සූරියආරච්චි</li>
+                <li>නිහාරි පෙරේරා</li>
+                <li>සනත් ගුණතිලක</li>
+                <li>සෙමිණි ඉද්දමල්ගොඩ</li>
+                <li>ජිනි රොයිස්</li>
+              </ul>
+              <ul className="space-y-1 text-sm text-gray-300">
+                <li>හර්ෂිකා රත්නායක</li>
+                <li>අශාන් ඩයස්</li>
+                <li>ඉසුරු ලොකුහෙට්ටිආරච්චි</li>
+                <li>මිලින්ද මඩුගල්ල</li>
+                <li>සමධි ප්‍රාර්ථනා</li>
+              </ul>
+              <ul className="space-y-1 text-sm text-gray-300">
+                <li>ටෙරී ජයසිංහ</li>
+                <li>ලහිරු බාලසූරිය</li>
+                <li>මුතු තරංග</li>
+                <li>සදුන් බණ්ඩාර</li>
+                <li>ප්‍රියංකර රත්නායක</li>
+              </ul>
+              <ul className="space-y-1 text-sm text-gray-300">
+                <li>අතුල ජයසිංහ</li>
+                <li>චින්තක වාස්</li>
+                <li>ප්‍රදීප් මානවඩු</li>
+                <li>ප්‍රින්ස් ප්‍රනාන්දු</li>
+                <li>ලසන්ත උඩුකුඹුර</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
