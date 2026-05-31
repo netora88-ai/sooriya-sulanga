@@ -241,11 +241,7 @@ export default function Ratings() {
             />
 
             <div className="mt-4 flex items-center justify-between gap-3">
-              <p className="text-xs text-gray-500">
-                {typeof window !== 'undefined' && process.env.NEXT_PUBLIC_MONGODB_URI
-                  ? 'Reviews are stored in MongoDB.'
-                  : 'Reviews are saved locally. Set up MONGODB_URI in .env.local for persistence.'}
-              </p>
+             
               <button
                 type="button"
                 disabled={submitting || rating === 0 || comment.trim().length === 0}
