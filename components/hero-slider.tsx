@@ -2,13 +2,18 @@
 
 import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import hero1 from '../images/hero1.PNG'
+import hero2 from '../images/hero2.PNG'
+import hero3 from '../images/hero3.PNG'
+import hero4 from '../images/hero4.PNG'
 
 const MotionDiv = motion.div as React.ComponentType<any>
 
 const IMAGES = [
-  'https://images.unsplash.com/photo-1517602302552-471fe67acf66?w=1920&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1502209524166-acea9362d9c3?w=1920&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?w=1920&q=80&auto=format&fit=crop'
+  hero1.src,
+  hero2.src,
+  hero3.src,
+  hero4.src,
 ]
 
 export default function HeroSlider(){
@@ -20,24 +25,24 @@ export default function HeroSlider(){
   },[])
 
   return (
-    <div className="relative h-[60vh] md:h-[70vh] bg-black">
-      <AnimatePresence mode="wait">
+    <div className="relative h-[60vh] md:h-[70vh] bg-black overflow-hidden">
+      <AnimatePresence>
         <MotionDiv
           key={IMAGES[index]}
           role="img"
           aria-label="Sooriya Sulanga hero image"
-          className="w-full h-full bg-center bg-cover"
+          className="absolute inset-0 bg-center bg-cover"
           style={{ backgroundImage: `url(${IMAGES[index]})` }}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.9 }}
+          initial={{ x: '100%' }}
+          animate={{ x: 0 }}
+          exit={{ x: '-100%' }}
+          transition={{ duration: 0.8, ease: 'easeInOut' }}
         />
       </AnimatePresence>
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none"></div>
 
-      <div className="absolute bottom-12 left-6 text-white">
+      <div className="absolute bottom-12 left-6 text-white z-10">
         <h2 className="text-4xl font-bold">Sooriya Sulanga</h2>
         <p className="mt-2 text-gray-300 hidden md:block">සූරිය සුළඟ — A cinematic portrait of memory and longing.</p>
       </div>

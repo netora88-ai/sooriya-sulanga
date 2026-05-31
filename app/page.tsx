@@ -1,7 +1,19 @@
-import React from 'react'
+"use client"
+
+import React, { useState } from 'react'
+import Image from 'next/image'
 import HeroSlider from '../components/hero-slider'
 import TrailerEmbed from '../components/trailer-embed'
 import Ratings from '../components/ratings'
+import posterImage from '../images/poster.jpeg'
+import galleryOne from '../images/gallery1.PNG'
+import galleryTwo from '../images/gallery2.PNG'
+import galleryThree from '../images/gallery3.PNG'
+import galleryFour from '../images/gallery4.PNG'
+import galleryFive from '../images/gallery5.PNG'
+import gallerySix from '../images/gallery6.PNG'
+import gallerySeven from '../images/gallery7.PNG'
+import galleryEight from '../images/gallery8.PNG'
 
 const actors = [
   { name: 'Lead Actor 1', role: 'Main character', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&q=80&auto=format&fit=crop' },
@@ -11,12 +23,14 @@ const actors = [
 ]
 
 const gallery = [
-  'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=1200&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=1200&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&q=80&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=1200&q=80&auto=format&fit=crop',
+  galleryOne,
+  galleryTwo,
+  galleryThree,
+  galleryFour,
+  galleryFive,
+  gallerySix,
+  gallerySeven,
+  galleryEight,
 ]
 
 const crew = [
@@ -27,12 +41,14 @@ const crew = [
 ]
 
 export default function Page(){
+  const [showAllGallery, setShowAllGallery] = useState(false)
+  const visibleGallery = showAllGallery ? gallery : gallery.slice(0, 6)
+
   return (
     <div>
       <header className="py-6">
-        <div className="container flex items-center justify-between">
-          <h1 className="text-2xl font-semibold">Sooriya Sulanga</h1>
-          <nav className="text-sm text-gray-300">සූරිය සුළඟ</nav>
+        <div className="container flex justify-center">
+          <h1 className="text-center text-4xl font-semibold tracking-wide text-white md:text-6xl">සූරිය සුළඟ</h1>
         </div>
       </header>
 
@@ -50,7 +66,16 @@ export default function Page(){
       </section>
 
       <section className="container py-10">
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">
+          <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
+            <Image
+              src={posterImage}
+              alt="Sooriya Sulanga poster"
+              className="h-full w-full object-cover"
+              priority
+            />
+          </div>
+
           <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6">
             <h2 className="text-2xl font-bold">Overview / දළ විශ්ලේෂණය</h2>
             <p className="mt-4 text-gray-300">A compact one-page portfolio for Sooriya Sulanga. This section is ready for the short synopsis and key film details pulled from IMDb once you share them or the page becomes accessible.</p>
@@ -63,7 +88,7 @@ export default function Page(){
             </ul>
           </div>
 
-          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6">
+          <div className="md:col-span-2 rounded-[2rem] border border-white/10 bg-white/5 p-6">
             <h3 className="text-xl font-semibold">Rating Window</h3>
             <p className="mt-2 text-sm text-gray-400">Visitors can rate the film and leave a comment. MongoDB can be added later if you want persistence across devices.</p>
             <div className="mt-4">
@@ -121,50 +146,59 @@ export default function Page(){
         </div>
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {gallery.map((image, index) => (
-            <div key={image} className="group overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/5">
-              <div
-                className="aspect-[16/10] bg-cover bg-center transition duration-500 group-hover:scale-105"
-                style={{ backgroundImage: `url(${image})` }}
+          {visibleGallery.map((image, index) => (
+            <div key={image.src} className="group overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/5">
+              <Image
+                src={image}
+                alt={`Gallery image ${index + 1}`}
+                className="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-105"
               />
               <div className="px-4 py-3 text-xs uppercase tracking-[0.25em] text-gray-500">Scene {index + 1}</div>
             </div>
           ))}
         </div>
+
+        {gallery.length > 6 && (
+          <div className="mt-6 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setShowAllGallery((current) => !current)}
+              className="rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white transition hover:border-yellow-400/60 hover:bg-white/10"
+            >
+              {showAllGallery ? 'Show less' : 'View all'}
+            </button>
+          </div>
+        )}
       </section>
 
       <section className="container py-10">
         <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6">
-          <div className="flex items-end justify-between gap-4">
-            <div>
-              <h2 className="text-2xl font-bold">Social Media</h2>
-              <p className="mt-2 text-sm text-gray-400">Add the official Facebook and Instagram links for the film here.</p>
+          <div className="flex justify-center">
+            <div className="flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="#"
+              aria-label="Open Facebook page"
+              className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/20 px-4 py-3 transition hover:border-yellow-400/60 hover:bg-black/30"
+            >
+              <span className="grid h-11 w-11 place-items-center rounded-full bg-[#1877f2]/15 text-[#1877f2] transition group-hover:bg-[#1877f2]/20">
+                <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
+                  <path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.2-1.4 1.5-1.4h1.7V4.8c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2v2H8v3.1h2.3V22h3.2z" />
+                </svg>
+              </span>
+            </a>
+
+            <a
+              href="#"
+              aria-label="Open Instagram page"
+              className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/20 px-4 py-3 transition hover:border-yellow-400/60 hover:bg-black/30"
+            >
+              <span className="grid h-11 w-11 place-items-center rounded-full bg-gradient-to-br from-[#f58529] via-[#dd2a7b] to-[#8134af] text-white transition group-hover:opacity-95">
+                <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
+                  <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm8.75 1.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
+                </svg>
+              </span>
+            </a>
             </div>
-            <p className="text-xs uppercase tracking-[0.25em] text-yellow-300/80">Links</p>
-          </div>
-
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            <a
-              href="#"
-              className="flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-5 py-4 transition hover:border-yellow-400/60 hover:bg-black/30"
-            >
-              <span>
-                <span className="block text-sm uppercase tracking-[0.25em] text-gray-500">Facebook</span>
-                <span className="mt-1 block text-lg font-semibold text-white">Official Facebook Page</span>
-              </span>
-              <span className="text-sm text-yellow-300">Open</span>
-            </a>
-
-            <a
-              href="#"
-              className="flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-5 py-4 transition hover:border-yellow-400/60 hover:bg-black/30"
-            >
-              <span>
-                <span className="block text-sm uppercase tracking-[0.25em] text-gray-500">Instagram</span>
-                <span className="mt-1 block text-lg font-semibold text-white">Official Instagram Page</span>
-              </span>
-              <span className="text-sm text-yellow-300">Open</span>
-            </a>
           </div>
         </div>
       </section>
