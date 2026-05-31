@@ -1,5 +1,6 @@
 import './globals.css'
 import React from 'react'
+import Providers from './providers'
 
 export const metadata = {
   title: 'Sooriya Sulanga — Portfolio',
@@ -10,9 +11,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }){
   return (
     <html lang="en">
       <body>
-        <main className="min-h-screen">
-          {children}
-        </main>
+        <Providers>
+          <main className="min-h-screen">
+            {children}
+          </main>
+        </Providers>
       </body>
     </html>
   )

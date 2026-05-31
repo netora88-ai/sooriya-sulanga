@@ -18,6 +18,8 @@ import producerChammika from '../images/producers and director/Chammika De Silva
 import producerManisha from '../images/producers and director/Manisha De Silva(producer).png'
 import directorPriyantha from '../images/producers and director/Priyantha Colombage(director & producer).jpg'
 import titleLogo from '../images/Sooriya Sulanga Tittle (2).png'
+import { useLang } from '../lib/i18n'
+import LanguageToggle from '../components/language-toggle'
 
 const actors = [
   { name: 'Lead Actor 1', role: 'Main character', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&q=80&auto=format&fit=crop' },
@@ -38,6 +40,7 @@ const gallery = [
 ]
 
 export default function Page(){
+  const { t } = useLang()
   const [showAllGallery, setShowAllGallery] = useState(false)
   const visibleGallery = showAllGallery ? gallery : gallery.slice(0, 6)
 
@@ -51,15 +54,16 @@ export default function Page(){
             </a>
           </div>
           <div className="flex flex-1 items-center justify-center gap-6 overflow-x-auto text-sm font-medium text-gray-300 scrollbar-none md:gap-8">
-            <a href="#trailer" className="shrink-0 transition hover:text-yellow-400">Trailer</a>
-            <a href="#story" className="shrink-0 transition hover:text-yellow-400">Story</a>
-            <a href="#ratings" className="shrink-0 transition hover:text-yellow-400">Ratings</a>
-            <a href="#actors" className="shrink-0 transition hover:text-yellow-400">Actors</a>
-            <a href="#producers" className="shrink-0 transition hover:text-yellow-400">Producers</a>
-            <a href="#gallery" className="shrink-0 transition hover:text-yellow-400">Gallery</a>
-            <a href="#cast-crew" className="shrink-0 transition hover:text-yellow-400">Cast &amp; Crew</a>
+            <a href="#trailer" className="shrink-0 transition hover:text-yellow-400">{t('nav.trailer')}</a>
+            <a href="#story" className="shrink-0 transition hover:text-yellow-400">{t('nav.story')}</a>
+            <a href="#ratings" className="shrink-0 transition hover:text-yellow-400">{t('nav.ratings')}</a>
+            <a href="#actors" className="shrink-0 transition hover:text-yellow-400">{t('nav.actors')}</a>
+            <a href="#producers" className="shrink-0 transition hover:text-yellow-400">{t('nav.producers')}</a>
+            <a href="#gallery" className="shrink-0 transition hover:text-yellow-400">{t('nav.gallery')}</a>
+            <a href="#cast-crew" className="shrink-0 transition hover:text-yellow-400">{t('nav.cast-crew')}</a>
           </div>
-          <div className="flex w-[140px] shrink-0 items-center justify-end gap-3">
+          <div className="flex w-[140px] shrink-0 items-center justify-end gap-2">
+            <LanguageToggle />
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="grid h-9 w-9 place-items-center rounded-full bg-white/5 text-gray-400 transition hover:bg-[#1877f2]/15 hover:text-[#1877f2]">
               <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
                 <path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.2-1.4 1.5-1.4h1.7V4.8c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2v2H8v3.1h2.3V22h3.2z" />
@@ -80,7 +84,7 @@ export default function Page(){
 
       <section id="trailer" className="container py-10">
         <div>
-          <h2 className="text-center text-3xl font-bold md:text-4xl">Watch Trailer</h2>
+          <h2 className="text-center text-3xl font-bold md:text-4xl">{t('section.watch-trailer')}</h2>
           <div className="mt-4 overflow-hidden rounded-[2rem] border border-white/10 bg-black/30 shadow-2xl shadow-black/30">
             <TrailerEmbed videoId="xPFz_NtopJc" />
           </div>
@@ -99,7 +103,7 @@ export default function Page(){
           </div>
 
           <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6">
-            <h2 className="text-2xl font-bold">Story / කතාව</h2>
+            <h2 className="text-2xl font-bold">{t('section.story')}</h2>
             <p className="mt-4 leading-7 text-gray-300">
               කොළඹ පෞද්ගලික බැංකුවක විධායක නිලධාරියෙකු වන සිෙත්, තම විවාහයට පෙර මිතුරන් සමඟ පැවැත්වූ සාදයකින් පසු අහම්බෙන් හමු වූ රෝගී තරුණියක් වන රෝධාට එක් රැයක් සඳහා නවාතැන් ලබා දෙයි. නමුත් පසුව ඇය බෝම්බ ප්‍රහාරයකට සම්බන්ධ සැකකාරියක් ලෙස හඳුනාගැනීමත් සමඟ සිෙත් අත්අඩංගුවට පත්වේ.
             </p>
@@ -117,8 +121,8 @@ export default function Page(){
           </div>
 
           <div id="ratings" className="md:col-span-2 rounded-[2rem] border border-white/10 bg-white/5 p-6">
-            <h3 className="text-xl font-semibold">Ratings &amp; Reviews</h3>
-            <p className="mt-2 text-sm text-gray-400">Rate the film, leave a comment, and see what others think.</p>
+            <h3 className="text-xl font-semibold">{t('ratings.current')}</h3>
+            <p className="mt-2 text-sm text-gray-400">{t('ratings.rate')}</p>
             <div className="mt-4">
               <Ratings />
             </div>
@@ -129,10 +133,10 @@ export default function Page(){
       <section id="actors" className="container py-10">
         <div className="flex items-end justify-between gap-4">
           <div>
-            <h2 className="text-2xl font-bold">Actors</h2>
-            <p className="mt-2 text-sm text-gray-400">Add actor photos here and replace the placeholder names with the IMDb cast list.</p>
+            <h2 className="text-2xl font-bold">{t('section.actors')}</h2>
+            <p className="mt-2 text-sm text-gray-400">{t('section.actors-placeholder')}</p>
           </div>
-          <p className="text-xs uppercase tracking-[0.25em] text-yellow-300/80">Cast</p>
+          <p className="text-xs uppercase tracking-[0.25em] text-yellow-300/80">{t('section.cast')}</p>
         </div>
 
         <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -151,10 +155,10 @@ export default function Page(){
       <section id="producers" className="container py-10">
         <div className="flex items-end justify-between gap-4">
           <div>
-            <h2 className="text-2xl font-bold">Producers &amp; Director</h2>
-            <p className="mt-2 text-sm text-gray-400">The creative leadership behind Sooriya Sulanga.</p>
+            <h2 className="text-2xl font-bold">{t('section.producers')}</h2>
+            <p className="mt-2 text-sm text-gray-400">{t('section.producers-placeholder')}</p>
           </div>
-          <p className="text-xs uppercase tracking-[0.25em] text-yellow-300/80">Team</p>
+          <p className="text-xs uppercase tracking-[0.25em] text-yellow-300/80">{t('section.team')}</p>
         </div>
 
         <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -166,7 +170,7 @@ export default function Page(){
             />
             <div className="p-4">
               <h3 className="text-lg font-semibold text-white">Priyantha Colombage</h3>
-              <p className="text-sm text-yellow-300/80">Director &amp; Producer</p>
+              <p className="text-sm text-yellow-300/80">{t('role.director-producer')}</p>
             </div>
           </article>
 
@@ -178,7 +182,7 @@ export default function Page(){
             />
             <div className="p-4">
               <h3 className="text-lg font-semibold text-white">Chammika De Silva</h3>
-              <p className="text-sm text-yellow-300/80">Producer</p>
+              <p className="text-sm text-yellow-300/80">{t('role.producer')}</p>
             </div>
           </article>
 
@@ -190,7 +194,7 @@ export default function Page(){
             />
             <div className="p-4">
               <h3 className="text-lg font-semibold text-white">Manisha De Silva</h3>
-              <p className="text-sm text-yellow-300/80">Producer</p>
+              <p className="text-sm text-yellow-300/80">{t('role.producer')}</p>
             </div>
           </article>
         </div>
@@ -198,8 +202,8 @@ export default function Page(){
 
       <section id="gallery" className="container py-10">
         <div>
-          <h2 className="text-2xl font-bold">Gallery</h2>
-          <p className="mt-2 text-sm text-gray-400">Replace these placeholders with film stills, posters, or BTS photos.</p>
+          <h2 className="text-2xl font-bold">{t('section.gallery')}</h2>
+          <p className="mt-2 text-sm text-gray-400">{t('section.gallery-placeholder')}</p>
         </div>
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -210,7 +214,7 @@ export default function Page(){
                 alt={`Gallery image ${index + 1}`}
                 className="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-105"
               />
-              <div className="px-4 py-3 text-xs uppercase tracking-[0.25em] text-gray-500">Scene {index + 1}</div>
+              <div className="px-4 py-3 text-xs uppercase tracking-[0.25em] text-gray-500">{t('scene')} {index + 1}</div>
             </div>
           ))}
         </div>
@@ -222,7 +226,7 @@ export default function Page(){
               onClick={() => setShowAllGallery((current) => !current)}
               className="rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white transition hover:border-yellow-400/60 hover:bg-white/10"
             >
-              {showAllGallery ? 'Show less' : 'View all'}
+              {showAllGallery ? t('section.show-less') : t('section.view-all')}
             </button>
           </div>
         )}
@@ -261,18 +265,18 @@ export default function Page(){
       </section>
 
       <section id="cast-crew" className="container py-10">
-        <h2 className="text-2xl font-bold">Cast &amp; Crew / ප්‍රධාන කාර්මික ශිල්පී නාමාවලිය</h2>
+        <h2 className="text-2xl font-bold">{t('section.cast-crew')}</h2>
 
         <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">අධ්‍යක්ෂණය Direction</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.direction')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
               <li>ප්‍රියන්ත කොළඹගේ</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">නිෂ්පාදනය Production</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.production')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
               <li>මනීෂා ද සිල්වා</li>
               <li>චම්මික ද සිල්වා</li>
@@ -282,70 +286,70 @@ export default function Page(){
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">සහාය අධ්‍යක්ෂණය Assistant Direction</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.assistant-direction')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
               <li>ඩොනල්ඩ් ජයන්ත</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">කලා අධ්‍යක්ෂණය Art Direction</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.art-direction')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
               <li>ලෙස්ලි විමල් වීරසිංහ</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">ඇඳුම් නිර්මාණය Costume Design</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.costume-design')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
               <li>ලසන්ත උඩුකුඹුර</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">නර්තන අධ්‍යක්ෂණය Dance Direction</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.dance-direction')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
               <li>හර්ෂිකා රත්නායක</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">සංගීත අධ්‍යක්ෂණය Music Direction</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.music-direction')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
               <li>තිරාන් විජයසිංහ</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">ශබ්ද සැලසුම්කරණය Sound Design</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.sound-design')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
               <li>තිරාන් විජයසිංහ</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">VFX</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.vfx')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
               <li>දසුන් සඳීප කොළඹගේ</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Drone ක්‍රියාකරු Operator</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.drone-operator')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
               <li>ඇලෙක්ස් කල්ඩෙරා</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">Weapon Instructor / Gun Fights Director</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.weapon-instructor')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
               <li>අභිත රුවන්ජිත්</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">අමතර කාර්ය මණ්ඩලය Additional Crew</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.additional-crew')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
               <li>ප්‍රියන්ත පතිරණ</li>
               <li>චාපා පෙරේරා</li>
@@ -362,7 +366,7 @@ export default function Page(){
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5 md:col-span-2 lg:col-span-3">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">ප්‍රධාන නළු නිළි නාමාවලිය Main Cast</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.main-cast')}</h3>
             <div className="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
               <ul className="space-y-1 text-sm text-gray-300">
                 <li>මේඝ සූරියආරච්චි</li>
