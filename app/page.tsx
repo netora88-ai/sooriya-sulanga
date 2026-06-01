@@ -17,12 +17,12 @@ import galleryEight from '../images/gallery8.PNG'
 import producerChammika from '../images/producers and director/Chammika De Silva(producer).png'
 import producerManisha from '../images/producers and director/Manisha De Silva(producer).png'
 import directorPriyantha from '../images/producers and director/Priyantha Colombage(director & producer).jpg'
-import titleLogo from '../images/Sooriya Sulanga Tittle (2).png'
+import titleLogo from '../images/Sooriya Sulanga logo.png'
 import actor01 from '../images/actors/1-Megha Sooriyaarachchi.jpg'
 import actor02 from '../images/actors/2-Nihari Perera.jpg'
 import actor03 from '../images/actors/3-Sanath Gunathilaka.jpg'
-import actor04 from '../images/actors/4-Semini Iddamalgoda.webp'
-import actor06 from '../images/actors/6-harshika Rathnayake.jpg'
+import actor04 from '../images/actors/4-Semini Iddamalgoda.jpg'
+import actor06 from '../images/actors/6-harshika Rathnayake.webp'
 import actor07 from '../images/actors/7-ashan dayas.jpg'
 import actor08 from '../images/actors/8-Isuru Lokuhetti.jpeg'
 import actor09 from '../images/actors/9-Milinda Madugalla.jpg'
@@ -66,6 +66,29 @@ const gallery = [
 export default function Page(){
   const { t } = useLang()
   const [menuOpen, setMenuOpen] = useState(false)
+  const allPosts = [
+    'https://www.instagram.com/p/DJteU-YoOL0/embed/captioned',
+    'https://www.instagram.com/p/DXwRL2qkXQX/embed/captioned',
+    'https://www.instagram.com/p/DXD70IwFiXJ/embed/captioned',
+    'https://www.instagram.com/reel/DRV8l9nCo4-/embed/captioned',
+    'https://www.instagram.com/p/DLg3OJZqCsV/embed/captioned',
+    'https://www.instagram.com/reel/DJavQmCB5wc/embed/captioned',
+  ]
+  const [visiblePosts, setVisiblePosts] = useState(allPosts.slice(0, 4))
+  const [fading, setFading] = useState(false)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setFading(true)
+      setTimeout(() => {
+        const shuffled = [...allPosts].sort(() => Math.random() - 0.5)
+        setVisiblePosts(shuffled.slice(0, 4))
+        setFading(false)
+      }, 500)
+    }, 6000)
+    return () => clearInterval(timer)
+  }, [])
+
   const [showAllActors, setShowAllActors] = useState(false)
   const visibleActors = showAllActors ? actors : actors.slice(0, 8)
   const [showAllGallery, setShowAllGallery] = useState(false)
@@ -97,7 +120,7 @@ export default function Page(){
         <div className="container flex items-center py-4">
           <div className="flex w-[140px] shrink-0">
             <a href="#">
-              <Image src={titleLogo} alt="Sooriya Sulanga" className="h-8 w-auto object-contain [mask-image:radial-gradient(circle_at_center,black_40%,transparent_100%)]" priority />
+              <Image src={titleLogo} alt="Sooriya Sulanga" className="h-10 w-auto object-contain md:h-12 [mask-image:radial-gradient(circle_at_center,black_40%,transparent_100%)]" priority />
             </a>
           </div>
 
@@ -108,17 +131,18 @@ export default function Page(){
             <a href="#actors" className="shrink-0 transition hover:text-yellow-400">{t('nav.actors')}</a>
             <a href="#producers" className="shrink-0 transition hover:text-yellow-400">{t('nav.producers')}</a>
             <a href="#gallery" className="shrink-0 transition hover:text-yellow-400">{t('nav.gallery')}</a>
+            <a href="#instagram" className="shrink-0 transition hover:text-yellow-400">{t('nav.instagram')}</a>
             <a href="#cast-crew" className="shrink-0 transition hover:text-yellow-400">{t('nav.cast-crew')}</a>
           </div>
 
           <div className="flex flex-1 items-center justify-end gap-2 md:flex-none">
             <LanguageToggle />
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="grid h-9 w-9 place-items-center rounded-full bg-white/5 text-gray-400 transition hover:bg-[#1877f2]/15 hover:text-[#1877f2]">
+            <a href="https://web.facebook.com/sooriyasulanga" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="grid h-9 w-9 place-items-center rounded-full bg-white/5 text-gray-400 transition hover:bg-[#1877f2]/15 hover:text-[#1877f2]">
               <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
                 <path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.2-1.4 1.5-1.4h1.7V4.8c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2v2H8v3.1h2.3V22h3.2z" />
               </svg>
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="grid h-9 w-9 place-items-center rounded-full bg-white/5 text-gray-400 transition hover:bg-gradient-to-br hover:from-[#f58529] hover:via-[#dd2a7b] hover:to-[#8134af] hover:text-white">
+            <a href="https://www.instagram.com/sooriyasulangafilm" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="grid h-9 w-9 place-items-center rounded-full bg-white/5 text-gray-400 transition hover:bg-gradient-to-br hover:from-[#f58529] hover:via-[#dd2a7b] hover:to-[#8134af] hover:text-white">
               <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
                 <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm8.75 1.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
               </svg>
@@ -150,6 +174,7 @@ export default function Page(){
               <a href="#actors" onClick={() => setMenuOpen(false)} className="transition hover:text-yellow-400">{t('nav.actors')}</a>
               <a href="#producers" onClick={() => setMenuOpen(false)} className="transition hover:text-yellow-400">{t('nav.producers')}</a>
               <a href="#gallery" onClick={() => setMenuOpen(false)} className="transition hover:text-yellow-400">{t('nav.gallery')}</a>
+              <a href="#instagram" onClick={() => setMenuOpen(false)} className="transition hover:text-yellow-400">{t('nav.instagram')}</a>
               <a href="#cast-crew" onClick={() => setMenuOpen(false)} className="transition hover:text-yellow-400">{t('nav.cast-crew')}</a>
             </div>
           </div>
@@ -360,7 +385,9 @@ export default function Page(){
           <div className="flex justify-center">
             <div className="flex flex-wrap items-center justify-center gap-4">
             <a
-              href="#"
+              href="https://web.facebook.com/sooriyasulanga"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Open Facebook page"
               className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/20 px-4 py-3 transition hover:border-yellow-400/60 hover:bg-black/30"
             >
@@ -372,7 +399,9 @@ export default function Page(){
             </a>
 
             <a
-              href="#"
+              href="https://www.instagram.com/sooriyasulangafilm"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Open Instagram page"
               className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/20 px-4 py-3 transition hover:border-yellow-400/60 hover:bg-black/30"
             >
@@ -384,6 +413,28 @@ export default function Page(){
             </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="instagram" className="container py-10">
+        <div>
+          <h2 className="text-2xl font-bold">{t('section.instagram')}</h2>
+          <p className="mt-2 text-sm text-gray-400">{t('section.instagram-placeholder')}</p>
+        </div>
+
+        <div className={`mt-6 grid gap-6 transition-all duration-500 sm:grid-cols-2 ${fading ? 'opacity-0 scale-[0.98]' : 'opacity-100 scale-100'}`}>
+          {visiblePosts.map((src) => (
+            <div key={src} className="overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/5">
+              <iframe
+                src={src}
+                className="w-full min-h-[460px]"
+                frameBorder="0"
+                scrolling="no"
+                allowTransparency
+                title="Instagram post"
+              />
+            </div>
+          ))}
         </div>
       </section>
 
@@ -456,7 +507,9 @@ export default function Page(){
               <li>දසුන් සඳීප කොළඹගේ</li>
             </ul>
           </div>
+        </div>
 
+        <div className="mt-6 grid gap-6 md:grid-cols-2">
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.drone-operator')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
@@ -470,56 +523,62 @@ export default function Page(){
               <li>අභිත රුවන්ජිත්</li>
             </ul>
           </div>
+        </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.additional-crew')}</h3>
-            <ul className="mt-4 space-y-1 text-sm text-gray-300">
+        <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-5">
+          <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.additional-crew')}</h3>
+          <div className="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+            <ul className="space-y-1 text-sm text-gray-300">
               <li>ප්‍රියන්ත පතිරණ</li>
               <li>චාපා පෙරේරා</li>
               <li>නිරුක්ෂාන් සේනානායක</li>
               <li>ලක්ෂ්මන් වික්‍රමතිලක</li>
+            </ul>
+            <ul className="space-y-1 text-sm text-gray-300">
               <li>සුරාජ් අස්මත්</li>
               <li>අමිත් විජේසුන්දර</li>
               <li>ජනක ප්‍රියදර්ශන</li>
               <li>අශේන් උදුල</li>
+            </ul>
+            <ul className="space-y-1 text-sm text-gray-300">
               <li>ප්‍රභාත් දර්ශන</li>
               <li>හර්ෂිකා රත්නායක</li>
               <li>එස්. එම්. සුමිත් විජය කුමාර</li>
             </ul>
           </div>
+        </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-5 md:col-span-2 lg:col-span-3">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.main-cast')}</h3>
-            <div className="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
-              <ul className="space-y-1 text-sm text-gray-300">
-                <li>මේඝ සූරියආරච්චි</li>
-                <li>නිහාරි පෙරේරා</li>
-                <li>සනත් ගුණතිලක</li>
-                <li>සෙමිණි ඉද්දමල්ගොඩ</li>
-                <li>ජිනි රොයිස්</li>
-              </ul>
-              <ul className="space-y-1 text-sm text-gray-300">
-                <li>හර්ෂිකා රත්නායක</li>
-                <li>අශාන් ඩයස්</li>
-                <li>ඉසුරු ලොකුහෙට්ටිආරච්චි</li>
-                <li>මිලින්ද මඩුගල්ල</li>
-                <li>සමධි ප්‍රාර්ථනා</li>
-              </ul>
-              <ul className="space-y-1 text-sm text-gray-300">
-                <li>ටෙරී ජයසිංහ</li>
-                <li>ලහිරු බාලසූරිය</li>
-                <li>මුතු තරංග</li>
-                <li>සදුන් බණ්ඩාර</li>
-                <li>ප්‍රියංකර රත්නායක</li>
-              </ul>
-              <ul className="space-y-1 text-sm text-gray-300">
-                <li>අතුල ජයසිංහ</li>
-                <li>චින්තක වාස්</li>
-                <li>ප්‍රදීප් මානවඩු</li>
-                <li>ප්‍රින්ස් ප්‍රනාන්දු</li>
-                <li>ලසන්ත උඩුකුඹුර</li>
-              </ul>
-            </div>
+        <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-5">
+          <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.main-cast')}</h3>
+          <div className="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+            <ul className="space-y-1 text-sm text-gray-300">
+              <li>මේඝ සූරියආරච්චි</li>
+              <li>නිහාරි පෙරේරා</li>
+              <li>සනත් ගුණතිලක</li>
+              <li>සෙමිණි ඉද්දමල්ගොඩ</li>
+              <li>ජිනි රොයිස්</li>
+            </ul>
+            <ul className="space-y-1 text-sm text-gray-300">
+              <li>හර්ෂිකා රත්නායක</li>
+              <li>අශාන් ඩයස්</li>
+              <li>ඉසුරු ලොකුහෙට්ටිආරච්චි</li>
+              <li>මිලින්ද මඩුගල්ල</li>
+              <li>සමධි ප්‍රාර්ථනා</li>
+            </ul>
+            <ul className="space-y-1 text-sm text-gray-300">
+              <li>ටෙරී ජයසිංහ</li>
+              <li>ලහිරු බාලසූරිය</li>
+              <li>මුතු තරංග</li>
+              <li>සදුන් බණ්ඩාර</li>
+              <li>ප්‍රියංකර රත්නායක</li>
+            </ul>
+            <ul className="space-y-1 text-sm text-gray-300">
+              <li>අතුල ජයසිංහ</li>
+              <li>චින්තක වාස්</li>
+              <li>ප්‍රදීප් මානවඩු</li>
+              <li>ප්‍රින්ස් ප්‍රනාන්දු</li>
+              <li>ලසන්ත උඩුකුඹුර</li>
+            </ul>
           </div>
         </div>
       </section>
