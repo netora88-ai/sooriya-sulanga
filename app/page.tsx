@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import HeroSlider from '../components/hero-slider'
 import TrailerEmbed from '../components/trailer-embed'
@@ -66,6 +66,8 @@ const gallery = [
 export default function Page(){
   const { t } = useLang()
   const [menuOpen, setMenuOpen] = useState(false)
+  const [showAllActors, setShowAllActors] = useState(false)
+  const visibleActors = showAllActors ? actors : actors.slice(0, 8)
   const [showAllGallery, setShowAllGallery] = useState(false)
   const visibleGallery = showAllGallery ? gallery : gallery.slice(0, 6)
   const [selectedImage, setSelectedImage] = useState<typeof gallery[number] | null>(null)
@@ -80,30 +82,6 @@ export default function Page(){
     setPreviewVisible(false)
     setTimeout(() => setSelectedImage(null), 300)
   }
-
-  const scrollRef = useRef<HTMLDivElement>(null)
-  const [canScrollLeft, setCanScrollLeft] = useState(false)
-  const [canScrollRight, setCanScrollRight] = useState(true)
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const amount = scrollRef.current.clientWidth * 0.5
-      scrollRef.current.scrollBy({
-        left: direction === 'left' ? -amount : amount,
-        behavior: 'smooth',
-      })
-    }
-  }
-
-  const checkScroll = () => {
-    if (scrollRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current
-      setCanScrollLeft(scrollLeft > 0)
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1)
-    }
-  }
-
-  useEffect(() => { checkScroll() }, [])
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -239,48 +217,32 @@ export default function Page(){
           <p className="text-xs uppercase tracking-[0.25em] text-yellow-300/80">{t('section.cast')}</p>
         </div>
 
-        <div className="relative mt-6">
-          {canScrollLeft && (
-            <button
-              onClick={() => scroll('left')}
-              className="absolute -left-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-white/15 bg-black/70 text-white backdrop-blur transition hover:bg-white/15 md:-left-4 md:h-10 md:w-10"
-            >
-              <svg className="h-4 w-4 md:h-5 md:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-          )}
-          {canScrollRight && (
-            <button
-              onClick={() => scroll('right')}
-              className="absolute -right-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-white/15 bg-black/70 text-white backdrop-blur transition hover:bg-white/15 md:-right-4 md:h-10 md:w-10"
-            >
-              <svg className="h-4 w-4 md:h-5 md:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          )}
-          <div
-            ref={scrollRef}
-            onScroll={checkScroll}
-            className="flex gap-5 overflow-x-auto scrollbar-none md:gap-6"
-          >
-            {actors.map((actor) => (
-              <div key={actor.name} className="flex w-24 shrink-0 flex-col items-center gap-3 md:w-32">
-                <div className="h-24 w-24 overflow-hidden rounded-full border-2 border-white/15 bg-white/5 md:h-32 md:w-32">
-                  <Image
-                    src={actor.image}
-                    alt={actor.name}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <span className="text-center text-xs font-medium text-white md:text-sm">
-                  {actor.name}
-                </span>
+        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {visibleActors.map((actor) => (
+            <article key={actor.name} className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5">
+              <Image
+                src={actor.image}
+                alt={actor.name}
+                className="aspect-[4/5] w-full object-cover"
+              />
+              <div className="p-4">
+                <h3 className="text-lg font-semibold text-white">{actor.name}</h3>
               </div>
-            ))}
-          </div>
+            </article>
+          ))}
         </div>
+
+        {actors.length > 8 && (
+          <div className="mt-6 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setShowAllActors((current) => !current)}
+              className="rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white transition hover:border-yellow-400/60 hover:bg-white/10"
+            >
+              {showAllActors ? 'Show Less' : 'View All'}
+            </button>
+          </div>
+        )}
       </section>
 
       <section id="producers" className="container py-10">
@@ -292,42 +254,42 @@ export default function Page(){
           <p className="text-xs uppercase tracking-[0.25em] text-yellow-300/80">{t('section.team')}</p>
         </div>
 
-        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          <article className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5">
-            <Image
-              src={directorPriyantha}
-              alt="Priyantha Colombage"
-              className="aspect-[4/5] w-full object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-lg font-semibold text-white">Priyantha Colombage</h3>
-              <p className="text-sm text-yellow-300/80">{t('role.director-producer')}</p>
+        <div className="mt-6 flex flex-wrap justify-center gap-8 md:gap-12">
+          <div className="flex flex-col items-center gap-3">
+            <div className="h-28 w-28 overflow-hidden rounded-full border-2 border-white/15 bg-white/5 md:h-36 md:w-36">
+              <Image
+                src={directorPriyantha}
+                alt="Priyantha Colombage"
+                className="h-full w-full object-cover"
+              />
             </div>
-          </article>
+            <span className="text-center text-sm font-medium text-white">Priyantha Colombage</span>
+            <span className="text-center text-xs text-yellow-300/80">{t('role.director-producer')}</span>
+          </div>
 
-          <article className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5">
-            <Image
-              src={producerChammika}
-              alt="Chammika De Silva"
-              className="aspect-[4/5] w-full object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-lg font-semibold text-white">Chammika De Silva</h3>
-              <p className="text-sm text-yellow-300/80">{t('role.producer')}</p>
+          <div className="flex flex-col items-center gap-3">
+            <div className="h-28 w-28 overflow-hidden rounded-full border-2 border-white/15 bg-white/5 md:h-36 md:w-36">
+              <Image
+                src={producerChammika}
+                alt="Chammika De Silva"
+                className="h-full w-full object-cover"
+              />
             </div>
-          </article>
+            <span className="text-center text-sm font-medium text-white">Chammika De Silva</span>
+            <span className="text-center text-xs text-yellow-300/80">{t('role.producer')}</span>
+          </div>
 
-          <article className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5">
-            <Image
-              src={producerManisha}
-              alt="Manisha De Silva"
-              className="aspect-[4/5] w-full object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-lg font-semibold text-white">Manisha De Silva</h3>
-              <p className="text-sm text-yellow-300/80">{t('role.producer')}</p>
+          <div className="flex flex-col items-center gap-3">
+            <div className="h-28 w-28 overflow-hidden rounded-full border-2 border-white/15 bg-white/5 md:h-36 md:w-36">
+              <Image
+                src={producerManisha}
+                alt="Manisha De Silva"
+                className="h-full w-full object-cover"
+              />
             </div>
-          </article>
+            <span className="text-center text-sm font-medium text-white">Manisha De Silva</span>
+            <span className="text-center text-xs text-yellow-300/80">{t('role.producer')}</span>
+          </div>
         </div>
       </section>
 
