@@ -13,6 +13,7 @@ const translations: Dict = {
   'nav.actors': { en: 'Actors', si: 'නළු නිළියෝ' },
   'nav.producers': { en: 'Producers', si: 'නිෂ්පාදකයෝ' },
   'nav.gallery': { en: 'Gallery', si: 'ගැලරිය' },
+  'nav.instagram': { en: 'Instagram', si: 'Instagram' },
   'nav.cast-crew': { en: 'Cast & Crew', si: 'කාර්මික කණ්ඩායම' },
 
   'section.watch-trailer': { en: 'Watch Trailer', si: 'ට්‍රේලරය නරඹන්න' },
@@ -23,6 +24,8 @@ const translations: Dict = {
   'section.producers-placeholder': { en: 'The creative leadership behind Sooriya Sulanga.', si: 'සූරිය සුළඟ පිටුපස නිර්මාණාත්මක නායකත්වය.' },
   'section.gallery': { en: 'Gallery', si: 'ගැලරිය' },
   'section.gallery-placeholder': { en: 'Replace these placeholders with film stills, posters, or BTS photos.', si: 'චිත්‍රපට දර්ශන, පෝස්ටර් හෝ BTS ඡායාරූප එක් කරන්න.' },
+  'section.instagram': { en: 'Instagram', si: 'Instagram' },
+  'section.instagram-placeholder': { en: 'Follow us on Instagram', si: 'Instagram හි අපව අනුගමනය කරන්න' },
   'section.cast-crew': { en: 'Cast & Crew / Main Technical Team', si: 'ප්‍රධාන කාර්මික ශිල්පී නාමාවලිය' },
   'section.cast': { en: 'Cast', si: 'රංගනය' },
   'section.team': { en: 'Team', si: 'කණ්ඩායම' },
