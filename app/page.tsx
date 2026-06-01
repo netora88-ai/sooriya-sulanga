@@ -189,7 +189,7 @@ export default function Page(){
         <div>
           <h2 className="text-center text-3xl font-bold md:text-4xl">{t('section.watch-trailer')}</h2>
           <div className="mt-4 overflow-hidden rounded-[2rem] border border-white/10 bg-black/30 shadow-2xl shadow-black/30">
-            <TrailerEmbed videoId="xPFz_NtopJc" />
+            <TrailerEmbed videoId="W6vEC1Np9CI" />
           </div>
         </div>
       </section>
