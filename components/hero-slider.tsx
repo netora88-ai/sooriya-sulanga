@@ -45,7 +45,7 @@ export default function HeroSlider() {
   }, [slideIndex])
 
   return (
-    <div className="relative h-[60vh] md:h-[70vh] bg-black overflow-hidden">
+    <div className="relative h-[40vh] md:h-[70vh] bg-black overflow-hidden">
       <AnimatePresence initial={false}>
         {slideIndex === 0 ? (
           <MotionDiv
