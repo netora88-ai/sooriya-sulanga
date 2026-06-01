@@ -66,6 +66,8 @@ const gallery = [
 export default function Page(){
   const { t } = useLang()
   const [menuOpen, setMenuOpen] = useState(false)
+  const [showAllActors, setShowAllActors] = useState(false)
+  const visibleActors = showAllActors ? actors : actors.slice(0, 8)
   const [showAllGallery, setShowAllGallery] = useState(false)
   const visibleGallery = showAllGallery ? gallery : gallery.slice(0, 6)
   const [selectedImage, setSelectedImage] = useState<typeof gallery[number] | null>(null)
@@ -216,7 +218,7 @@ export default function Page(){
         </div>
 
         <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {actors.map((actor) => (
+          {visibleActors.map((actor) => (
             <article key={actor.name} className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5">
               <Image
                 src={actor.image}
@@ -229,6 +231,18 @@ export default function Page(){
             </article>
           ))}
         </div>
+
+        {actors.length > 8 && (
+          <div className="mt-6 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setShowAllActors((current) => !current)}
+              className="rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white transition hover:border-yellow-400/60 hover:bg-white/10"
+            >
+              {showAllActors ? 'Show Less' : 'View All'}
+            </button>
+          </div>
+        )}
       </section>
 
       <section id="producers" className="container py-10">
