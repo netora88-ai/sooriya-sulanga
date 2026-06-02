@@ -3,7 +3,7 @@ import React from 'react'
 import Providers from './providers'
 
 export const metadata = {
-  title: 'Sooriya Sulanga — Portfolio',
+  title: 'Sooriya Sulanga — Film',
   description: 'A portfolio page for the Sinhala film Sooriya Sulanga',
 }
 
