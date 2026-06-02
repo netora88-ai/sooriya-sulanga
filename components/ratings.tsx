@@ -19,6 +19,7 @@ export default function Ratings() {
   const [reviews, setReviews] = useState<Review[]>([])
   const [submitting, setSubmitting] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [showAllModal, setShowAllModal] = useState(false)
 
   const fetchReviews = useCallback(async () => {
     setLoading(true)
@@ -106,7 +107,7 @@ export default function Ratings() {
   }
 
   return (
-    <div className="mt-4 space-y-6">
+    <><div className="mt-4 space-y-6">
       {loading ? (
         <>
           <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/20 backdrop-blur-sm">
@@ -262,23 +263,76 @@ export default function Ratings() {
               {reviews.length === 0 ? (
                 <p className="text-sm text-gray-400">{t('ratings.no-comments')}</p>
               ) : (
-                reviews.slice(0, 10).map((review) => (
-                  <article key={review._id} className="rounded-2xl border border-white/10 bg-black/20 p-4">
-                    <div className="flex items-center justify-between gap-4">
-                      <div>
-                        <p className="font-medium text-white">{review.name}</p>
-                        <p className="text-xs text-gray-500">{new Date(review.createdAt).toLocaleString()}</p>
+                <>
+                  {reviews.slice(0, 10).map((review) => (
+                    <article key={review._id} className="rounded-2xl border border-white/10 bg-black/20 p-4">
+                      <div className="flex items-center justify-between gap-4">
+                        <div>
+                          <p className="font-medium text-white">{review.name}</p>
+                          <p className="text-xs text-gray-500">{new Date(review.createdAt).toLocaleString()}</p>
+                        </div>
+                        <p className="text-sm text-yellow-300">{review.rating}/5</p>
                       </div>
-                      <p className="text-sm text-yellow-300">{review.rating}/5</p>
+                      <p className="mt-3 text-sm leading-6 text-gray-300">{review.comment}</p>
+                    </article>
+                  ))}
+                  {reviews.length > 10 && (
+                    <div className="flex justify-center pt-2">
+                      <button
+                        type="button"
+                        onClick={() => setShowAllModal(true)}
+                        className="rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white transition hover:border-yellow-400/60 hover:bg-white/10"
+                      >
+                        {t('section.view-all')} ({reviews.length})
+                      </button>
                     </div>
-                    <p className="mt-3 text-sm leading-6 text-gray-300">{review.comment}</p>
-                  </article>
-                ))
+                  )}
+                </>
               )}
             </div>
           </div>
         </>
       )}
     </div>
+
+      {showAllModal && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          onClick={() => setShowAllModal(false)}
+        >
+          <div
+            className="relative max-h-[85vh] w-full max-w-2xl overflow-hidden rounded-3xl border border-white/10 bg-black/90 p-6 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setShowAllModal(false)}
+              className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-full bg-white/10 text-gray-400 transition hover:bg-white/20"
+            >
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            <h3 className="text-lg font-semibold text-white">{t('ratings.comments')} ({reviews.length})</h3>
+
+            <div className="mt-4 space-y-3 overflow-y-auto max-h-[calc(85vh-8rem)] pr-1">
+              {reviews.map((review) => (
+                <article key={review._id} className="rounded-2xl border border-white/10 bg-black/20 p-4">
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <p className="font-medium text-white">{review.name}</p>
+                      <p className="text-xs text-gray-500">{new Date(review.createdAt).toLocaleString()}</p>
+                    </div>
+                    <p className="text-sm text-yellow-300">{review.rating}/5</p>
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-gray-300">{review.comment}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   )
 }
