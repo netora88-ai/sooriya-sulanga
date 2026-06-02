@@ -18,6 +18,7 @@ import producerChammika from '../images/producers and director/Chammika De Silva
 import producerManisha from '../images/producers and director/Manisha De Silva(producer).png'
 import directorPriyantha from '../images/producers and director/Priyantha Colombage(director & producer).jpg'
 import titleLogo from '../images/Sooriya Sulanga logo.png'
+import loadingBg from '../images/loadinBackground.jpg'
 import actor01 from '../images/actors/1-Megha Sooriyaarachchi.jpg'
 import actor02 from '../images/actors/2-Nihari Perera.jpg'
 import actor03 from '../images/actors/3-Sanath Gunathilaka.jpg'
@@ -40,9 +41,9 @@ const actors = [
   { name: 'Nihari Perera', image: actor02 },
   { name: 'Sanath Gunathilaka', image: actor03 },
   { name: 'Semini Iddamalgoda', image: actor04 },
-  { name: 'harshika Rathnayake', image: actor06 },
   { name: 'ashan dayas', image: actor07 },
   { name: 'Isuru Lokuhetti', image: actor08 },
+  { name: 'harshika Rathnayake', image: actor06 },
   { name: 'Milinda Madugalla', image: actor09 },
   { name: 'Samadi Prarthana', image: actor10 },
   { name: 'Priyankara Rathnayake', image: actor11 },
@@ -66,6 +67,7 @@ const gallery = [
 export default function Page(){
   const { t } = useLang()
   const [menuOpen, setMenuOpen] = useState(false)
+  const [loading, setLoading] = useState(true)
   const allPosts = [
     'https://www.instagram.com/p/DJteU-YoOL0/embed/captioned',
     'https://www.instagram.com/p/DXwRL2qkXQX/embed/captioned',
@@ -114,8 +116,35 @@ export default function Page(){
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [])
 
+  useEffect(() => {
+    const minTimer = setTimeout(() => {
+      if (document.readyState === 'complete') {
+        setLoading(false)
+      } else {
+        window.addEventListener('load', () => setLoading(false), { once: true })
+      }
+    }, 1500)
+    return () => clearTimeout(minTimer)
+  }, [])
+
   return (
-    <div>
+    <>
+      {loading && (
+        <div
+          className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-cover bg-center"
+          style={{ backgroundImage: `url(${loadingBg.src})` }}
+        >
+          <div className="absolute inset-0 bg-black/50" />
+          <Image
+            src={titleLogo}
+            alt="Sooriya Sulanga"
+            className="relative h-32 w-auto md:h-40"
+            priority
+          />
+          <div className="relative mt-8 h-12 w-12 animate-spin rounded-full border-4 border-white/20 border-t-yellow-400" />
+        </div>
+      )}
+      <div className={loading ? 'invisible' : ''}>
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur-xl">
         <div className="container flex items-center py-4">
           <div className="flex w-[140px] shrink-0">
@@ -124,29 +153,19 @@ export default function Page(){
             </a>
           </div>
 
-          <div className="hidden md:flex flex-1 items-center justify-center gap-6 text-sm font-medium text-gray-300 md:gap-8">
-            <a href="#trailer" className="shrink-0 transition hover:text-yellow-400">{t('nav.trailer')}</a>
-            <a href="#story" className="shrink-0 transition hover:text-yellow-400">{t('nav.story')}</a>
-            <a href="#ratings" className="shrink-0 transition hover:text-yellow-400">{t('nav.ratings')}</a>
-            <a href="#actors" className="shrink-0 transition hover:text-yellow-400">{t('nav.actors')}</a>
-            <a href="#producers" className="shrink-0 transition hover:text-yellow-400">{t('nav.producers')}</a>
-            <a href="#gallery" className="shrink-0 transition hover:text-yellow-400">{t('nav.gallery')}</a>
-            <a href="#instagram" className="shrink-0 transition hover:text-yellow-400">{t('nav.instagram')}</a>
-            <a href="#cast-crew" className="shrink-0 transition hover:text-yellow-400">{t('nav.cast-crew')}</a>
+          <div className="hidden md:flex flex-1 items-center justify-center gap-6 text-sm font-bold text-red-500 md:gap-8">
+            <a href="#trailer" className="shrink-0 transition hover:text-red-400">{t('nav.trailer')}</a>
+            <a href="#story" className="shrink-0 transition hover:text-red-400">{t('nav.story')}</a>
+            <a href="#ratings" className="shrink-0 transition hover:text-red-400">{t('nav.ratings')}</a>
+            <a href="#actors" className="shrink-0 transition hover:text-red-400">{t('nav.actors')}</a>
+            <a href="#producers" className="shrink-0 transition hover:text-red-400">{t('nav.producers')}</a>
+            <a href="#gallery" className="shrink-0 transition hover:text-red-400">{t('nav.gallery')}</a>
+            <a href="#instagram" className="shrink-0 transition hover:text-red-400">{t('nav.instagram')}</a>
+            <a href="#cast-crew" className="shrink-0 transition hover:text-red-400">{t('nav.cast-crew')}</a>
           </div>
 
           <div className="flex flex-1 items-center justify-end gap-2 md:flex-none">
             <LanguageToggle />
-            <a href="https://web.facebook.com/sooriyasulanga" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="grid h-9 w-9 place-items-center rounded-full bg-white/5 text-gray-400 transition hover:bg-[#1877f2]/15 hover:text-[#1877f2]">
-              <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
-                <path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.2-1.4 1.5-1.4h1.7V4.8c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2v2H8v3.1h2.3V22h3.2z" />
-              </svg>
-            </a>
-            <a href="https://www.instagram.com/sooriyasulangafilm" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="grid h-9 w-9 place-items-center rounded-full bg-white/5 text-gray-400 transition hover:bg-gradient-to-br hover:from-[#f58529] hover:via-[#dd2a7b] hover:to-[#8134af] hover:text-white">
-              <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
-                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm8.75 1.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
-              </svg>
-            </a>
             <button
               onClick={() => setMenuOpen((prev) => !prev)}
               className="grid h-9 w-9 place-items-center rounded-full bg-white/5 text-gray-400 transition hover:bg-white/15 md:hidden"
@@ -167,22 +186,22 @@ export default function Page(){
 
         {menuOpen && (
           <div className="border-t border-white/10 bg-black/95 backdrop-blur-xl md:hidden">
-            <div className="container flex flex-col gap-4 py-5 text-sm font-medium text-gray-300">
-              <a href="#trailer" onClick={() => setMenuOpen(false)} className="transition hover:text-yellow-400">{t('nav.trailer')}</a>
-              <a href="#story" onClick={() => setMenuOpen(false)} className="transition hover:text-yellow-400">{t('nav.story')}</a>
-              <a href="#ratings" onClick={() => setMenuOpen(false)} className="transition hover:text-yellow-400">{t('nav.ratings')}</a>
-              <a href="#actors" onClick={() => setMenuOpen(false)} className="transition hover:text-yellow-400">{t('nav.actors')}</a>
-              <a href="#producers" onClick={() => setMenuOpen(false)} className="transition hover:text-yellow-400">{t('nav.producers')}</a>
-              <a href="#gallery" onClick={() => setMenuOpen(false)} className="transition hover:text-yellow-400">{t('nav.gallery')}</a>
-              <a href="#instagram" onClick={() => setMenuOpen(false)} className="transition hover:text-yellow-400">{t('nav.instagram')}</a>
-              <a href="#cast-crew" onClick={() => setMenuOpen(false)} className="transition hover:text-yellow-400">{t('nav.cast-crew')}</a>
+            <div className="container flex flex-col gap-4 py-5 text-sm font-bold text-red-500">
+              <a href="#trailer" onClick={() => setMenuOpen(false)} className="transition hover:text-red-400">{t('nav.trailer')}</a>
+              <a href="#story" onClick={() => setMenuOpen(false)} className="transition hover:text-red-400">{t('nav.story')}</a>
+              <a href="#ratings" onClick={() => setMenuOpen(false)} className="transition hover:text-red-400">{t('nav.ratings')}</a>
+              <a href="#actors" onClick={() => setMenuOpen(false)} className="transition hover:text-red-400">{t('nav.actors')}</a>
+              <a href="#producers" onClick={() => setMenuOpen(false)} className="transition hover:text-red-400">{t('nav.producers')}</a>
+              <a href="#gallery" onClick={() => setMenuOpen(false)} className="transition hover:text-red-400">{t('nav.gallery')}</a>
+              <a href="#instagram" onClick={() => setMenuOpen(false)} className="transition hover:text-red-400">{t('nav.instagram')}</a>
+              <a href="#cast-crew" onClick={() => setMenuOpen(false)} className="transition hover:text-red-400">{t('nav.cast-crew')}</a>
             </div>
           </div>
         )}
       </nav>
 
       <section className="pt-20 pb-12">
-        <HeroSlider />
+        <HeroSlider ready={!loading} />
       </section>
 
       <section id="trailer" className="container py-10">
@@ -279,41 +298,47 @@ export default function Page(){
           <p className="text-xs uppercase tracking-[0.25em] text-yellow-300/80">{t('section.team')}</p>
         </div>
 
-        <div className="mt-6 flex flex-wrap justify-center gap-8 md:gap-12">
-          <div className="flex flex-col items-center gap-3">
-            <div className="h-28 w-28 overflow-hidden rounded-full border-2 border-white/15 bg-white/5 md:h-36 md:w-36">
+        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/5">
+            <div className="aspect-square overflow-hidden">
               <Image
                 src={directorPriyantha}
                 alt="Priyantha Colombage"
                 className="h-full w-full object-cover"
               />
             </div>
-            <span className="text-center text-sm font-medium text-white">Priyantha Colombage</span>
-            <span className="text-center text-xs text-yellow-300/80">{t('role.director-producer')}</span>
+            <div className="px-4 py-3">
+              <span className="text-center text-sm font-medium text-white">Priyantha Colombage</span>
+              <span className="block text-xs text-yellow-300/80">{t('role.director-producer')}</span>
+            </div>
           </div>
 
-          <div className="flex flex-col items-center gap-3">
-            <div className="h-28 w-28 overflow-hidden rounded-full border-2 border-white/15 bg-white/5 md:h-36 md:w-36">
+          <div className="overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/5">
+            <div className="aspect-square overflow-hidden">
               <Image
                 src={producerChammika}
                 alt="Chammika De Silva"
                 className="h-full w-full object-cover"
               />
             </div>
-            <span className="text-center text-sm font-medium text-white">Chammika De Silva</span>
-            <span className="text-center text-xs text-yellow-300/80">{t('role.producer')}</span>
+            <div className="px-4 py-3">
+              <span className="text-center text-sm font-medium text-white">Chammika De Silva</span>
+              <span className="block text-xs text-yellow-300/80">{t('role.producer')}</span>
+            </div>
           </div>
 
-          <div className="flex flex-col items-center gap-3">
-            <div className="h-28 w-28 overflow-hidden rounded-full border-2 border-white/15 bg-white/5 md:h-36 md:w-36">
+          <div className="overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/5">
+            <div className="aspect-square overflow-hidden">
               <Image
                 src={producerManisha}
                 alt="Manisha De Silva"
                 className="h-full w-full object-cover"
               />
             </div>
-            <span className="text-center text-sm font-medium text-white">Manisha De Silva</span>
-            <span className="text-center text-xs text-yellow-300/80">{t('role.producer')}</span>
+            <div className="px-4 py-3">
+              <span className="text-center text-sm font-medium text-white">Manisha De Silva</span>
+              <span className="block text-xs text-yellow-300/80">{t('role.producer')}</span>
+            </div>
           </div>
         </div>
       </section>
@@ -380,41 +405,7 @@ export default function Page(){
         </div>
       )}
 
-      <section className="container py-10">
-        <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6">
-          <div className="flex justify-center">
-            <div className="flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="https://web.facebook.com/sooriyasulanga"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open Facebook page"
-              className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/20 px-4 py-3 transition hover:border-yellow-400/60 hover:bg-black/30"
-            >
-              <span className="grid h-11 w-11 place-items-center rounded-full bg-[#1877f2]/15 text-[#1877f2] transition group-hover:bg-[#1877f2]/20">
-                <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
-                  <path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.2-1.4 1.5-1.4h1.7V4.8c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2v2H8v3.1h2.3V22h3.2z" />
-                </svg>
-              </span>
-            </a>
 
-            <a
-              href="https://www.instagram.com/sooriyasulangafilm"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open Instagram page"
-              className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/20 px-4 py-3 transition hover:border-yellow-400/60 hover:bg-black/30"
-            >
-              <span className="grid h-11 w-11 place-items-center rounded-full bg-gradient-to-br from-[#f58529] via-[#dd2a7b] to-[#8134af] text-white transition group-hover:opacity-95">
-                <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
-                  <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm8.75 1.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
-                </svg>
-              </span>
-            </a>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section id="instagram" className="container py-10">
         <div>
@@ -583,9 +574,40 @@ export default function Page(){
         </div>
       </section>
 
+      {/* SIDE SOCIAL ICONS */}
+      <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3 pr-0">
+        <div className="flex flex-col gap-3 bg-black/60 backdrop-blur-xl border border-white/10 rounded-l-2xl py-4 px-2 translate-x-[calc(100%-40px)] hover:translate-x-0 transition-transform duration-300">
+          <a href="https://web.facebook.com/sooriyasulanga" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+            className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-gray-400 transition hover:bg-[#1877f2]/15 hover:text-[#1877f2]">
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
+              <path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.2-1.4 1.5-1.4h1.7V4.8c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2v2H8v3.1h2.3V22h3.2z" />
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/sooriyasulangafilm" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+            className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-gray-400 transition hover:bg-gradient-to-br hover:from-[#f58529] hover:via-[#dd2a7b] hover:to-[#8134af] hover:text-white">
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
+              <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm8.75 1.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
+            </svg>
+          </a>
+          <a href="https://www.tiktok.com/@sooriyasulanga" target="_blank" rel="noopener noreferrer" aria-label="TikTok"
+            className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-gray-400 transition hover:bg-black/15 hover:text-white">
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
+              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/@sooriyasulanga" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
+            className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-gray-400 transition hover:bg-red-600/15 hover:text-red-600">
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
       <footer className="border-t border-gray-800 py-8">
         <div className="container text-sm text-gray-500">IMDb source: https://www.imdb.com/title/tt36046630/</div>
       </footer>
     </div>
+    </>
   )
 }

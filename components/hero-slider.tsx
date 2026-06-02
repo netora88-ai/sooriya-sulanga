@@ -18,12 +18,13 @@ const LAYER_IMAGES = [heroLayer1, heroLayer2, heroLayer3, heroLayer4]
 const SINGLE_SLIDES = [heroOld2.src, heroOld3.src, heroOld4.src]
 const TOTAL_SLIDES = 1 + SINGLE_SLIDES.length
 
-export default function HeroSlider() {
+export default function HeroSlider({ ready = true }: { ready?: boolean }) {
   const [slideIndex, setSlideIndex] = useState(0)
   const [layersVisible, setLayersVisible] = useState(0)
   const [titleShown, setTitleShown] = useState(false)
 
   useEffect(() => {
+    if (!ready) return
     setLayersVisible(0)
 
     if (slideIndex === 0) {
@@ -42,7 +43,7 @@ export default function HeroSlider() {
       setSlideIndex(i => (i + 1) % TOTAL_SLIDES)
     }, 4000)
     return () => clearTimeout(t)
-  }, [slideIndex])
+  }, [slideIndex, ready])
 
   return (
     <div className="relative h-[40vh] md:h-[70vh] bg-black overflow-hidden">
@@ -84,11 +85,11 @@ export default function HeroSlider() {
 
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 pointer-events-none"></div>
 
-      <div className="absolute inset-0 flex items-end justify-center z-10 p-6 pb-10 md:pb-16">
+      <div className="absolute inset-0 flex items-end justify-center z-10 p-6 pb-10 md:pb-3 overflow-hidden">
         <Image
           src={titleImage}
           alt="Sooriya Sulanga"
-          className={`max-h-[60%] w-auto max-w-[90%] object-contain transition-opacity duration-1000 ${titleShown ? 'opacity-100' : 'opacity-0'}`}
+          className={`max-h-[45%] w-auto max-w-[90%] object-contain transition-all duration-1000 ease-out ${titleShown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full'}`}
           priority
         />
       </div>
