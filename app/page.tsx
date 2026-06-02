@@ -37,20 +37,20 @@ import { useLang } from '../lib/i18n'
 import LanguageToggle from '../components/language-toggle'
 
 const actors = [
-  { name: 'Megha Sooriyaarachchi', image: actor01 },
-  { name: 'Nihari Perera', image: actor02 },
-  { name: 'Sanath Gunathilaka', image: actor03 },
-  { name: 'Semini Iddamalgoda', image: actor04 },
-  { name: 'ashan dayas', image: actor07 },
-  { name: 'Isuru Lokuhetti', image: actor08 },
-  { name: 'harshika Rathnayake', image: actor06 },
-  { name: 'Milinda Madugalla', image: actor09 },
-  { name: 'Samadi Prarthana', image: actor10 },
-  { name: 'Priyankara Rathnayake', image: actor11 },
-  { name: 'Athula Jayasinghe', image: actor12 },
-  { name: 'Chinthaka Vaas', image: actor13 },
-  { name: 'pradip manawadu', image: actor14 },
-  { name: 'lasantha udukubara', image: actor15 },
+  { nameKey: 'name.megha-sooriyaarachchi', image: actor01 },
+  { nameKey: 'name.nihari-perera', image: actor02 },
+  { nameKey: 'name.sanath-gunathilaka', image: actor03 },
+  { nameKey: 'name.semini-iddamalgoda', image: actor04 },
+  { nameKey: 'name.ashan-dias', image: actor07 },
+  { nameKey: 'name.isuru-lokuhettiarachchi', image: actor08 },
+  { nameKey: 'name.harshika-rathnayake', image: actor06 },
+  { nameKey: 'name.milinda-madugalle', image: actor09 },
+  { nameKey: 'name.samadhi-prarthana', image: actor10 },
+  { nameKey: 'name.priyankara-rathnayake', image: actor11 },
+  { nameKey: 'name.athula-jayasinghe', image: actor12 },
+  { nameKey: 'name.chinthaka-vaas', image: actor13 },
+  { nameKey: 'name.pradeep-manawadu', image: actor14 },
+  { nameKey: 'name.lasantha-udukumbura', image: actor15 },
 ]
 
 const gallery = [
@@ -236,9 +236,9 @@ export default function Page(){
               අවසානයේ සිෙත් තම නිර්දෝෂීභාවය ඔප්පු කරගත හැකිද, තරුශි සමඟ නැවත එක්විය හැකිද, සහ රෝධාගේ සැබෑ කතාව කුමක්ද යන්න මෙම කතාවේ ප්‍රධාන අභිරහස් වේ.
             </p>
             <ul className="mt-4 space-y-1 text-sm text-gray-400">
-              <li><strong>Year:</strong> 2024</li>
-              <li><strong>Runtime:</strong> 120 min</li>
-              <li><strong>Genre:</strong> Drama / Thriller</li>
+              <li><strong>{t('story.year')}:</strong> 2024</li>
+              <li><strong>{t('story.runtime')}:</strong> 120 min</li>
+              <li><strong>{t('story.genre')}:</strong> Drama / Thriller</li>
             </ul>
           </div>
 
@@ -263,14 +263,14 @@ export default function Page(){
 
         <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {visibleActors.map((actor) => (
-            <article key={actor.name} className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5">
+            <article key={actor.nameKey} className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5">
               <Image
                 src={actor.image}
-                alt={actor.name}
+                alt={t(actor.nameKey)}
                 className="aspect-[4/5] w-full object-cover"
               />
               <div className="p-4">
-                <h3 className="text-lg font-semibold text-white">{actor.name}</h3>
+                <h3 className="text-lg font-semibold text-white">{t(actor.nameKey)}</h3>
               </div>
             </article>
           ))}
@@ -283,7 +283,7 @@ export default function Page(){
               onClick={() => setShowAllActors((current) => !current)}
               className="rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white transition hover:border-yellow-400/60 hover:bg-white/10"
             >
-              {showAllActors ? 'Show Less' : 'View All'}
+              {showAllActors ? t('section.show-less') : t('section.view-all')}
             </button>
           </div>
         )}
@@ -303,12 +303,12 @@ export default function Page(){
             <div className="aspect-square overflow-hidden">
               <Image
                 src={directorPriyantha}
-                alt="Priyantha Colombage"
+                alt={t('name.priyantha-colombage')}
                 className="h-full w-full object-cover"
               />
             </div>
             <div className="px-4 py-3">
-              <span className="text-center text-sm font-medium text-white">Priyantha Colombage</span>
+              <span className="text-center text-sm font-medium text-white">{t('name.priyantha-colombage')}</span>
               <span className="block text-xs text-yellow-300/80">{t('role.director-producer')}</span>
             </div>
           </div>
@@ -317,12 +317,12 @@ export default function Page(){
             <div className="aspect-square overflow-hidden">
               <Image
                 src={producerChammika}
-                alt="Chammika De Silva"
+                alt={t('name.chammika-de-silva')}
                 className="h-full w-full object-cover"
               />
             </div>
             <div className="px-4 py-3">
-              <span className="text-center text-sm font-medium text-white">Chammika De Silva</span>
+              <span className="text-center text-sm font-medium text-white">{t('name.chammika-de-silva')}</span>
               <span className="block text-xs text-yellow-300/80">{t('role.producer')}</span>
             </div>
           </div>
@@ -331,12 +331,12 @@ export default function Page(){
             <div className="aspect-square overflow-hidden">
               <Image
                 src={producerManisha}
-                alt="Manisha De Silva"
+                alt={t('name.manisha-de-silva')}
                 className="h-full w-full object-cover"
               />
             </div>
             <div className="px-4 py-3">
-              <span className="text-center text-sm font-medium text-white">Manisha De Silva</span>
+              <span className="text-center text-sm font-medium text-white">{t('name.manisha-de-silva')}</span>
               <span className="block text-xs text-yellow-300/80">{t('role.producer')}</span>
             </div>
           </div>
@@ -436,66 +436,66 @@ export default function Page(){
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.direction')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>ප්‍රියන්ත කොළඹගේ</li>
+              <li>{t('name.priyantha-colombage')}</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.production')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>මනීෂා ද සිල්වා</li>
-              <li>චම්මික ද සිල්වා</li>
-              <li>ප්‍රියන්ත කොළඹගේ</li>
-              <li>රංජිත් පෙරේරා</li>
+              <li>{t('name.manisha-de-silva')}</li>
+              <li>{t('name.chammika-de-silva')}</li>
+              <li>{t('name.priyantha-colombage')}</li>
+              <li>{t('name.ranjith-perera')}</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.assistant-direction')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>ඩොනල්ඩ් ජයන්ත</li>
+              <li>{t('name.donald-jayantha')}</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.art-direction')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>ලෙස්ලි විමල් වීරසිංහ</li>
+              <li>{t('name.leslie-wimal-weerasinghe')}</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.costume-design')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>ලසන්ත උඩුකුඹුර</li>
+              <li>{t('name.lasantha-udukumbura')}</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.dance-direction')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>හර්ෂිකා රත්නායක</li>
+              <li>{t('name.harshika-rathnayake')}</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.music-direction')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>තිරාන් විජයසිංහ</li>
+              <li>{t('name.thiran-wijesinghe')}</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.sound-design')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>තිරාන් විජයසිංහ</li>
+              <li>{t('name.thiran-wijesinghe')}</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.vfx')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>දසුන් සඳීප කොළඹගේ</li>
+              <li>{t('name.dasun-sandeepa-colombage')}</li>
             </ul>
           </div>
         </div>
@@ -504,14 +504,14 @@ export default function Page(){
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.drone-operator')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>ඇලෙක්ස් කල්ඩෙරා</li>
+              <li>{t('name.alex-caldera')}</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.weapon-instructor')}</h3>
             <ul className="mt-4 space-y-1 text-sm text-gray-300">
-              <li>අභිත රුවන්ජිත්</li>
+              <li>{t('name.abitha-ruwanjith')}</li>
             </ul>
           </div>
         </div>
@@ -520,21 +520,21 @@ export default function Page(){
           <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.additional-crew')}</h3>
           <div className="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
             <ul className="space-y-1 text-sm text-gray-300">
-              <li>ප්‍රියන්ත පතිරණ</li>
-              <li>චාපා පෙරේරා</li>
-              <li>නිරුක්ෂාන් සේනානායක</li>
-              <li>ලක්ෂ්මන් වික්‍රමතිලක</li>
+              <li>{t('name.priyantha-pathirana')}</li>
+              <li>{t('name.chapa-perera')}</li>
+              <li>{t('name.nirukshan-senanayake')}</li>
+              <li>{t('name.lakshman-wickramathilaka')}</li>
             </ul>
             <ul className="space-y-1 text-sm text-gray-300">
-              <li>සුරාජ් අස්මත්</li>
-              <li>අමිත් විජේසුන්දර</li>
-              <li>ජනක ප්‍රියදර්ශන</li>
-              <li>අශේන් උදුල</li>
+              <li>{t('name.suraj-asmath')}</li>
+              <li>{t('name.amith-wijesundara')}</li>
+              <li>{t('name.janaka-priyadarshana')}</li>
+              <li>{t('name.ashen-udula')}</li>
             </ul>
             <ul className="space-y-1 text-sm text-gray-300">
-              <li>ප්‍රභාත් දර්ශන</li>
-              <li>හර්ෂිකා රත්නායක</li>
-              <li>එස්. එම්. සුමිත් විජය කුමාර</li>
+              <li>{t('name.prabath-darshana')}</li>
+              <li>{t('name.harshika-rathnayake')}</li>
+              <li>{t('name.sm-sumith-vijaya-kumara')}</li>
             </ul>
           </div>
         </div>
@@ -543,32 +543,32 @@ export default function Page(){
           <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-300/80">{t('cast-crew.main-cast')}</h3>
           <div className="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
             <ul className="space-y-1 text-sm text-gray-300">
-              <li>මේඝ සූරියආරච්චි</li>
-              <li>නිහාරි පෙරේරා</li>
-              <li>සනත් ගුණතිලක</li>
-              <li>සෙමිණි ඉද්දමල්ගොඩ</li>
-              <li>ජිනි රොයිස්</li>
+              <li>{t('name.megha-sooriyaarachchi')}</li>
+              <li>{t('name.nihari-perera')}</li>
+              <li>{t('name.sanath-gunathilaka')}</li>
+              <li>{t('name.semini-iddamalgoda')}</li>
+              <li>{t('name.jini-roys')}</li>
             </ul>
             <ul className="space-y-1 text-sm text-gray-300">
-              <li>හර්ෂිකා රත්නායක</li>
-              <li>අශාන් ඩයස්</li>
-              <li>ඉසුරු ලොකුහෙට්ටිආරච්චි</li>
-              <li>මිලින්ද මඩුගල්ල</li>
-              <li>සමධි ප්‍රාර්ථනා</li>
+              <li>{t('name.harshika-rathnayake')}</li>
+              <li>{t('name.ashan-dias')}</li>
+              <li>{t('name.isuru-lokuhettiarachchi')}</li>
+              <li>{t('name.milinda-madugalle')}</li>
+              <li>{t('name.samadhi-prarthana')}</li>
             </ul>
             <ul className="space-y-1 text-sm text-gray-300">
-              <li>ටෙරී ජයසිංහ</li>
-              <li>ලහිරු බාලසූරිය</li>
-              <li>මුතු තරංග</li>
-              <li>සදුන් බණ්ඩාර</li>
-              <li>ප්‍රියංකර රත්නායක</li>
+              <li>{t('name.terry-jayasinghe')}</li>
+              <li>{t('name.lahiru-balasooriya')}</li>
+              <li>{t('name.muthu-tharanga')}</li>
+              <li>{t('name.sandun-bandara')}</li>
+              <li>{t('name.priyankara-rathnayake')}</li>
             </ul>
             <ul className="space-y-1 text-sm text-gray-300">
-              <li>අතුල ජයසිංහ</li>
-              <li>චින්තක වාස්</li>
-              <li>ප්‍රදීප් මානවඩු</li>
-              <li>ප්‍රින්ස් ප්‍රනාන්දු</li>
-              <li>ලසන්ත උඩුකුඹුර</li>
+              <li>{t('name.athula-jayasinghe')}</li>
+              <li>{t('name.chinthaka-vaas')}</li>
+              <li>{t('name.pradeep-manawadu')}</li>
+              <li>{t('name.prince-fernando')}</li>
+              <li>{t('name.lasantha-udukumbura')}</li>
             </ul>
           </div>
         </div>
@@ -605,7 +605,7 @@ export default function Page(){
       </div>
 
       <footer className="border-t border-gray-800 py-8">
-        <div className="container text-sm text-gray-500">IMDb source: https://www.imdb.com/title/tt36046630/</div>
+        <div className="container text-sm text-gray-500"></div>
       </footer>
     </div>
     </>
