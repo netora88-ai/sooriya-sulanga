@@ -5,6 +5,9 @@ import Providers from './providers'
 export const metadata = {
   title: 'Sooriya Sulanga — Film',
   description: 'A portfolio page for the Sinhala film Sooriya Sulanga',
+  icons: {
+    icon: '/favicon.png',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }){
