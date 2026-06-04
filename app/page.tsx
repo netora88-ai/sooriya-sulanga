@@ -27,10 +27,7 @@ import actor06 from '../images/actors/6-harshika Rathnayake.webp'
 import actor07 from '../images/actors/7-ashan dayas.jpg'
 import actor08 from '../images/actors/8-Isuru Lokuhetti.jpeg'
 import actor09 from '../images/actors/9-Milinda Madugalla.jpg'
-import actor10 from '../images/actors/10-Samadi Prarthana.jpeg'
 import actor11 from '../images/actors/11-Priyankara Rathnayake.jpg'
-import actor12 from '../images/actors/12-Athula Jayasinghe.jpg'
-import actor13 from '../images/actors/13-Chinthaka Vaas.jpeg'
 import actor14 from '../images/actors/14-pradip manawadu.jpg'
 import actor15 from '../images/actors/15-lasantha udukubara.jpg'
 import { useLang } from '../lib/i18n'
@@ -45,10 +42,7 @@ const actors = [
   { nameKey: 'name.isuru-lokuhettiarachchi', image: actor08 },
   { nameKey: 'name.harshika-rathnayake', image: actor06 },
   { nameKey: 'name.milinda-madugalle', image: actor09 },
-  { nameKey: 'name.samadhi-prarthana', image: actor10 },
   { nameKey: 'name.priyankara-rathnayake', image: actor11 },
-  { nameKey: 'name.athula-jayasinghe', image: actor12 },
-  { nameKey: 'name.chinthaka-vaas', image: actor13 },
   { nameKey: 'name.pradeep-manawadu', image: actor14 },
   { nameKey: 'name.lasantha-udukumbura', image: actor15 },
 ]
@@ -227,13 +221,13 @@ export default function Page(){
           <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6">
             <h2 className="text-2xl font-bold">{t('section.story')}</h2>
             <p className="mt-4 leading-7 text-gray-300">
-              කොළඹ පෞද්ගලික බැංකුවක විධායක නිලධාරියෙකු වන සිෙත්, තම විවාහයට පෙර මිතුරන් සමඟ පැවැත්වූ සාදයකින් පසු අහම්බෙන් හමු වූ රෝගී තරුණියක් වන රෝධාට එක් රැයක් සඳහා නවාතැන් ලබා දෙයි. නමුත් පසුව ඇය බෝම්බ ප්‍රහාරයකට සම්බන්ධ සැකකාරියක් ලෙස හඳුනාගැනීමත් සමඟ සිෙත් අත්අඩංගුවට පත්වේ.
+              Sineth, an executive at a private bank in Colombo, offers shelter for one night to a sick young woman named Radha after encountering her following a gathering with friends on the eve of his wedding. However, his life takes a devastating turn when Radha is later identified as a suspect connected to a violent attack, leading to his arrest.
             </p>
             <p className="mt-4 leading-7 text-gray-300">
-              මෙම සිදුවීම නිසා ඔහුගේ රැකියාව, විවාහය සහ පවුල් ජීවිතය බිඳ වැටෙන අතර, ඔහුගේ පියාද මිය යයි. සියල්ල අහිමි වූ සිෙත්, රෝධා පිළිබඳ සැඟවුණු සත්‍යය සොයා යමින්, ඇය පිටුපස තිබූ විශාල රහසක් හෙළිකර ගැනීමට උත්සාහ කරයි.
+              As the incident shatters his career, engagement, and family life, Sineth finds himself isolated and struggling to rebuild his future. Determined to uncover the truth, he embarks on a journey to investigate Radha's past, gradually revealing secrets far more complex than he ever imagined.
             </p>
             <p className="mt-4 leading-7 text-gray-300">
-              අවසානයේ සිෙත් තම නිර්දෝෂීභාවය ඔප්පු කරගත හැකිද, තරුශි සමඟ නැවත එක්විය හැකිද, සහ රෝධාගේ සැබෑ කතාව කුමක්ද යන්න මෙම කතාවේ ප්‍රධාන අභිරහස් වේ.
+              Can Sineth prove his innocence, reunite with the woman he loves, and uncover the truth behind Radha's story? Sooriya Sulanga is a gripping action thriller that explores fate, sacrifice, and the unexpected consequences of a single decision.
             </p>
             <ul className="mt-4 space-y-1 text-sm text-gray-400">
               <li><strong>{t('story.year')}:</strong> 2024</li>
@@ -577,7 +571,7 @@ export default function Page(){
       {/* SIDE SOCIAL ICONS */}
       <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3 pr-0">
         <div className="flex flex-col gap-3 bg-black/60 backdrop-blur-xl border border-white/10 rounded-l-2xl py-4 px-2 translate-x-[calc(100%-40px)] hover:translate-x-0 transition-transform duration-300">
-          <a href="https://web.facebook.com/sooriyasulanga" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+          <a href="https://web.facebook.com/SooriyaSulangaa" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
             className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-gray-400 transition hover:bg-[#1877f2]/15 hover:text-[#1877f2]">
             <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
               <path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.2-1.4 1.5-1.4h1.7V4.8c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2v2H8v3.1h2.3V22h3.2z" />
@@ -589,18 +583,13 @@ export default function Page(){
               <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm8.75 1.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
             </svg>
           </a>
-          <a href="https://www.tiktok.com/@sooriyasulanga" target="_blank" rel="noopener noreferrer" aria-label="TikTok"
-            className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-gray-400 transition hover:bg-black/15 hover:text-white">
+          <div
+            className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-gray-400 cursor-default">
             <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
               <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
             </svg>
-          </a>
-          <a href="https://www.youtube.com/@sooriyasulanga" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
-            className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-gray-400 transition hover:bg-red-600/15 hover:text-red-600">
-            <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
-              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-            </svg>
-          </a>
+          </div>
+
         </div>
       </div>
 
