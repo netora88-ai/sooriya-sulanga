@@ -3,15 +3,11 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import heroLayer1 from '../images/hero/1.png'
-import heroLayer2 from '../images/hero/2.png'
-import heroLayer3 from '../images/hero/3.png'
-import heroLayer4 from '../images/hero/4.png'
-import titleImage from '../images/Sooriya Sulanga Tittle (2).png'
+import { heroImages, titleImg } from '../lib/content'
 
 const MotionDiv = motion.div as React.ComponentType<any>
 
-const LAYER_IMAGES = [heroLayer1, heroLayer2, heroLayer3, heroLayer4]
+const LAYER_IMAGES = heroImages
 
 export default function HeroSlider({ ready = true }: { ready?: boolean }) {
   const [layersVisible, setLayersVisible] = useState(0)
@@ -62,7 +58,7 @@ export default function HeroSlider({ ready = true }: { ready?: boolean }) {
 
       <div className="absolute inset-0 flex items-end justify-center z-10 p-6 pb-10 md:pb-3 overflow-hidden">
         <Image
-          src={titleImage}
+          src={titleImg}
           alt="Sooriya Sulanga"
           className={`max-h-[45%] w-auto max-w-[90%] object-contain transition-all duration-1000 ease-out ${titleShown ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full'}`}
           priority

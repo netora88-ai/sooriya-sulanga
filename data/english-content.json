@@ -1,0 +1,138 @@
+{
+  "site": {
+    "title": "Sooriya Sulanga — Film",
+    "description": "A portfolio page for the Sinhala film Sooriya Sulanga"
+  },
+  "nav": {
+    "trailer": "Trailer",
+    "story": "Story",
+    "ratings": "Ratings",
+    "actors": "Actors",
+    "producers": "Producers",
+    "gallery": "Gallery",
+    "instagram": "Instagram",
+    "castCrew": "Cast & Crew"
+  },
+  "trailer": {
+    "heading": "Watch Trailer"
+  },
+  "story": {
+    "heading": "Story",
+    "synopsis": [
+      "Sineth, an executive at a private bank in Colombo, offers shelter for one night to a sick young woman named Radha after encountering her following a gathering with friends on the eve of his wedding. However, his life takes a devastating turn when Radha is later identified as a suspect connected to a violent attack, leading to his arrest.",
+      "As the incident shatters his career, engagement, and family life, Sineth finds himself isolated and struggling to rebuild his future. Determined to uncover the truth, he embarks on a journey to investigate Radha's past, gradually revealing secrets far more complex than he ever imagined.",
+      "Can Sineth prove his innocence, reunite with the woman he loves, and uncover the truth behind Radha's story? Sooriya Sulanga is a gripping action thriller that explores fate, sacrifice, and the unexpected consequences of a single decision."
+    ],
+    "labels": {
+      "year": "Year",
+      "runtime": "Runtime",
+      "genre": "Genre"
+    }
+  },
+  "ratings": {
+    "current": "Current Ratings",
+    "rate": "Rate this film",
+    "select": "Select",
+    "yourName": "Your name",
+    "commentPlaceholder": "Leave a short comment about the movie",
+    "submit": "Submit",
+    "submitting": "Submitting\u2026",
+    "comments": "Comments",
+    "noComments": "No comments yet.",
+    "review": "review",
+    "reviews": "reviews",
+    "noReviews": "No reviews yet",
+    "storedMongo": "Reviews are stored in MongoDB.",
+    "storedLocal": "Reviews are saved locally. Set up MONGODB_URI in .env.local for persistence.",
+    "youRated": "You rated",
+    "outOf": "out of"
+  },
+  "actors": {
+    "heading": "Actors",
+    "placeholder": "Add actor photos here and replace the placeholder names with the IMDb cast list.",
+    "cast": "Cast"
+  },
+  "producers": {
+    "heading": "Producers & Director",
+    "placeholder": "The creative leadership behind Sooriya Sulanga.",
+    "team": "Team"
+  },
+  "gallery": {
+    "heading": "Gallery",
+    "placeholder": "Replace these placeholders with film stills, posters, or BTS photos.",
+    "scene": "Scene"
+  },
+  "instagram": {
+    "heading": "Instagram",
+    "placeholder": "Follow us on Instagram"
+  },
+  "castCrew": {
+    "heading": "Cast & Crew / Main Technical Team",
+    "subsections": {
+      "direction": { "heading": "Direction" },
+      "production": { "heading": "Production" },
+      "assistantDirection": { "heading": "Assistant Direction" },
+      "artDirection": { "heading": "Art Direction" },
+      "costumeDesign": { "heading": "Costume Design" },
+      "danceDirection": { "heading": "Dance Direction" },
+      "musicDirection": { "heading": "Music Direction" },
+      "soundDesign": { "heading": "Sound Design" },
+      "vfx": { "heading": "VFX" },
+      "droneOperator": { "heading": "Drone Operator" },
+      "weaponInstructor": { "heading": "Weapon Instructor / Gun Fights Director" },
+      "additionalCrew": { "heading": "Additional Crew" },
+      "mainCast": { "heading": "Main Cast" }
+    }
+  },
+  "roles": {
+    "directorProducer": "Director & Producer",
+    "producer": "Producer"
+  },
+  "common": {
+    "viewAll": "View all",
+    "showLess": "Show less",
+    "readMore": "Read more"
+  },
+  "names": {
+    "megha-sooriyaarachchi": "Megha Sooriyaarachchi",
+    "nihari-perera": "Nihari Perera",
+    "sanath-gunathilaka": "Sanath Gunathilaka",
+    "semini-iddamalgoda": "Semini Iddamalgoda",
+    "jini-roys": "Jini Roys",
+    "harshika-rathnayake": "Harshika Rathnayake",
+    "ashan-dias": "Ashan Dias",
+    "isuru-lokuhettiarachchi": "Isuru Lokuhettiarachchi",
+    "milinda-madugalle": "Milinda Madugalle",
+    "priyankara-rathnayake": "Priyankara Rathnayake",
+    "pradeep-manawadu": "Pradeep Manawadu",
+    "prince-fernando": "Prince Fernando",
+    "lasantha-udukumbura": "Lasantha Udukumbura",
+    "priyantha-colombage": "Priyantha Colombage",
+    "manisha-de-silva": "Manisha De Silva",
+    "chammika-de-silva": "Chammika De Silva",
+    "ranjith-perera": "Ranjith Perera",
+    "donald-jayantha": "Donald Jayantha",
+    "leslie-wimal-weerasinghe": "Leslie Wimal Weerasinghe",
+    "thiran-wijesinghe": "Thiran Wijesinghe",
+    "dasun-sandeepa-colombage": "Dasun Sandeepa Colombage",
+    "alex-caldera": "Alex Caldera",
+    "abitha-ruwanjith": "Abitha Ruwanjith",
+    "priyantha-pathirana": "Priyantha Pathirana",
+    "chapa-perera": "Chapa Perera",
+    "nirukshan-senanayake": "Nirukshan Senanayake",
+    "lakshman-wickramathilaka": "Lakshman Wickramathilaka",
+    "suraj-asmath": "Suraj Asmath",
+    "amith-wijesundara": "Amith Wijesundara",
+    "janaka-priyadarshana": "Janaka Priyadarshana",
+    "ashen-udula": "Ashen Udula",
+    "prabath-darshana": "Prabath Darshana",
+    "sm-sumith-vijaya-kumara": "S. M. Sumith Vijaya Kumara",
+    "samadhi-prarthana": "Samadhi Prarthana",
+    "terry-jayasinghe": "Terry Jayasinghe",
+    "lahiru-balasooriya": "Lahiru Balasooriya",
+    "muthu-tharanga": "Muthu Tharanga",
+    "sandun-bandara": "Sandun Bandara",
+    "athula-jayasinghe": "Athula Jayasinghe",
+    "chinthaka-vaas": "Chinthaka Vaas"
+  }
+}
