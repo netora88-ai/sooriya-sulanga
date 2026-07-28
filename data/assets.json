@@ -1,0 +1,62 @@
+{
+  "images": {
+    "logo": "images/Sooriya Sulanga logo.png",
+    "title": "images/Sooriya Sulanga Tittle (2).png",
+    "loadingBg": "images/loadinBackground.jpg",
+    "poster": "images/poster.jpeg",
+    "hero": [
+      "images/hero/1.png",
+      "images/hero/2.png",
+      "images/hero/3.png",
+      "images/hero/4.png"
+    ],
+    "gallery": [
+      "images/gallery1.PNG",
+      "images/gallery2.PNG",
+      "images/gallery3.PNG",
+      "images/gallery4.PNG",
+      "images/gallery5.PNG",
+      "images/gallery6.PNG",
+      "images/gallery7.PNG",
+      "images/gallery8.PNG"
+    ],
+    "producers": {
+      "priyantha-colombage": "images/producers and director/Priyantha Colombage(director & producer).jpg",
+      "chammika-de-silva": "images/producers and director/Chammika De Silva(producer).png",
+      "manisha-de-silva": "images/producers and director/Manisha De Silva(producer).png"
+    },
+    "actors": [
+      { "id": "megha-sooriyaarachchi", "path": "images/actors/1-Megha Sooriyaarachchi.jpg" },
+      { "id": "nihari-perera", "path": "images/actors/2-Nihari Perera.jpg" },
+      { "id": "sanath-gunathilaka", "path": "images/actors/3-Sanath Gunathilaka.jpg" },
+      { "id": "semini-iddamalgoda", "path": "images/actors/4-Semini Iddamalgoda.jpg" },
+      { "id": "harshika-rathnayake", "path": "images/actors/6-harshika Rathnayake.webp" },
+      { "id": "ashan-dias", "path": "images/actors/7-ashan dayas.jpg" },
+      { "id": "isuru-lokuhettiarachchi", "path": "images/actors/8-Isuru Lokuhetti.jpeg" },
+      { "id": "milinda-madugalle", "path": "images/actors/9-Milinda Madugalla.jpg" },
+      { "id": "priyankara-rathnayake", "path": "images/actors/11-Priyankara Rathnayake.jpg" },
+      { "id": "pradeep-manawadu", "path": "images/actors/14-pradip manawadu.jpg" },
+      { "id": "lasantha-udukumbura", "path": "images/actors/15-lasantha udukubara.jpg" }
+    ]
+  },
+  "urls": {
+    "youtubeVideoId": "W6vEC1Np9CI",
+    "instagramPosts": [
+      "https://www.instagram.com/p/DJteU-YoOL0/embed/captioned",
+      "https://www.instagram.com/p/DXwRL2qkXQX/embed/captioned",
+      "https://www.instagram.com/p/DXD70IwFiXJ/embed/captioned",
+      "https://www.instagram.com/reel/DRV8l9nCo4-/embed/captioned",
+      "https://www.instagram.com/p/DLg3OJZqCsV/embed/captioned",
+      "https://www.instagram.com/reel/DJavQmCB5wc/embed/captioned"
+    ],
+    "social": {
+      "facebook": "https://web.facebook.com/SooriyaSulangaa",
+      "instagram": "https://www.instagram.com/sooriyasulangafilm"
+    }
+  },
+  "metadata": {
+    "year": "2024",
+    "runtime": "120 min",
+    "genre": "Drama / Thriller"
+  }
+}
