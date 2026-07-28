@@ -5,71 +5,16 @@ import Image from 'next/image'
 import HeroSlider from '../components/hero-slider'
 import TrailerEmbed from '../components/trailer-embed'
 import Ratings from '../components/ratings'
-import posterImage from '../images/poster.jpeg'
-import galleryOne from '../images/gallery1.PNG'
-import galleryTwo from '../images/gallery2.PNG'
-import galleryThree from '../images/gallery3.PNG'
-import galleryFour from '../images/gallery4.PNG'
-import galleryFive from '../images/gallery5.PNG'
-import gallerySix from '../images/gallery6.PNG'
-import gallerySeven from '../images/gallery7.PNG'
-import galleryEight from '../images/gallery8.PNG'
-import producerChammika from '../images/producers and director/Chammika De Silva(producer).png'
-import producerManisha from '../images/producers and director/Manisha De Silva(producer).png'
-import directorPriyantha from '../images/producers and director/Priyantha Colombage(director & producer).jpg'
-import titleLogo from '../images/Sooriya Sulanga logo.png'
-import loadingBg from '../images/loadinBackground.jpg'
-import actor01 from '../images/actors/1-Megha Sooriyaarachchi.jpg'
-import actor02 from '../images/actors/2-Nihari Perera.jpg'
-import actor03 from '../images/actors/3-Sanath Gunathilaka.jpg'
-import actor04 from '../images/actors/4-Semini Iddamalgoda.jpg'
-import actor06 from '../images/actors/6-harshika Rathnayake.webp'
-import actor07 from '../images/actors/7-ashan dayas.jpg'
-import actor08 from '../images/actors/8-Isuru Lokuhetti.jpeg'
-import actor09 from '../images/actors/9-Milinda Madugalla.jpg'
-import actor11 from '../images/actors/11-Priyankara Rathnayake.jpg'
-import actor14 from '../images/actors/14-pradip manawadu.jpg'
-import actor15 from '../images/actors/15-lasantha udukubara.jpg'
 import { useLang } from '../lib/i18n'
 import LanguageToggle from '../components/language-toggle'
+import { assets, actors, galleryImages, producerImages, poster, logo, loadingBg } from '../lib/content'
 
-const actors = [
-  { nameKey: 'name.megha-sooriyaarachchi', image: actor01 },
-  { nameKey: 'name.nihari-perera', image: actor02 },
-  { nameKey: 'name.sanath-gunathilaka', image: actor03 },
-  { nameKey: 'name.semini-iddamalgoda', image: actor04 },
-  { nameKey: 'name.ashan-dias', image: actor07 },
-  { nameKey: 'name.isuru-lokuhettiarachchi', image: actor08 },
-  { nameKey: 'name.harshika-rathnayake', image: actor06 },
-  { nameKey: 'name.milinda-madugalle', image: actor09 },
-  { nameKey: 'name.priyankara-rathnayake', image: actor11 },
-  { nameKey: 'name.pradeep-manawadu', image: actor14 },
-  { nameKey: 'name.lasantha-udukumbura', image: actor15 },
-]
-
-const gallery = [
-  galleryOne,
-  galleryTwo,
-  galleryThree,
-  galleryFour,
-  galleryFive,
-  gallerySix,
-  gallerySeven,
-  galleryEight,
-]
+const allPosts = assets.urls.instagramPosts
 
 export default function Page(){
   const { t } = useLang()
   const [menuOpen, setMenuOpen] = useState(false)
   const [loading, setLoading] = useState(true)
-  const allPosts = [
-    'https://www.instagram.com/p/DJteU-YoOL0/embed/captioned',
-    'https://www.instagram.com/p/DXwRL2qkXQX/embed/captioned',
-    'https://www.instagram.com/p/DXD70IwFiXJ/embed/captioned',
-    'https://www.instagram.com/reel/DRV8l9nCo4-/embed/captioned',
-    'https://www.instagram.com/p/DLg3OJZqCsV/embed/captioned',
-    'https://www.instagram.com/reel/DJavQmCB5wc/embed/captioned',
-  ]
   const [visiblePosts, setVisiblePosts] = useState(allPosts.slice(0, 4))
   const [fading, setFading] = useState(false)
 
@@ -88,11 +33,11 @@ export default function Page(){
   const [showAllActors, setShowAllActors] = useState(false)
   const visibleActors = showAllActors ? actors : actors.slice(0, 8)
   const [showAllGallery, setShowAllGallery] = useState(false)
-  const visibleGallery = showAllGallery ? gallery : gallery.slice(0, 6)
-  const [selectedImage, setSelectedImage] = useState<typeof gallery[number] | null>(null)
+  const visibleGallery = showAllGallery ? galleryImages : galleryImages.slice(0, 6)
+  const [selectedImage, setSelectedImage] = useState<typeof galleryImages[number] | null>(null)
   const [previewVisible, setPreviewVisible] = useState(false)
 
-  const openPreview = (image: typeof gallery[number]) => {
+  const openPreview = (image: typeof galleryImages[number]) => {
     setSelectedImage(image)
     requestAnimationFrame(() => setPreviewVisible(true))
   }
@@ -130,7 +75,7 @@ export default function Page(){
         >
           <div className="absolute inset-0 bg-black/50" />
           <Image
-            src={titleLogo}
+            src={logo}
             alt="Sooriya Sulanga"
             className="relative h-32 w-auto md:h-40"
             priority
@@ -143,7 +88,7 @@ export default function Page(){
         <div className="container flex items-center py-4">
           <div className="flex w-[140px] shrink-0">
             <a href="#">
-              <Image src={titleLogo} alt="Sooriya Sulanga" className="h-10 w-auto object-contain md:h-12 [mask-image:radial-gradient(circle_at_center,black_40%,transparent_100%)]" priority />
+              <Image src={logo} alt="Sooriya Sulanga" className="h-10 w-auto object-contain md:h-12 [mask-image:radial-gradient(circle_at_center,black_40%,transparent_100%)]" priority />
             </a>
           </div>
 
@@ -202,7 +147,7 @@ export default function Page(){
         <div>
           <h2 className="text-center text-3xl font-bold md:text-4xl">{t('section.watch-trailer')}</h2>
           <div className="mt-4 overflow-hidden rounded-[2rem] border border-white/10 bg-black/30 shadow-2xl shadow-black/30">
-            <TrailerEmbed videoId="W6vEC1Np9CI" />
+            <TrailerEmbed videoId={assets.urls.youtubeVideoId} />
           </div>
         </div>
       </section>
@@ -211,7 +156,7 @@ export default function Page(){
         <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">
           <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
             <Image
-              src={posterImage}
+              src={poster}
               alt="Sooriya Sulanga poster"
               className="h-full w-full object-cover"
               priority
@@ -221,18 +166,18 @@ export default function Page(){
           <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6">
             <h2 className="text-2xl font-bold">{t('section.story')}</h2>
             <p className="mt-4 leading-7 text-gray-300">
-              Sineth, an executive at a private bank in Colombo, offers shelter for one night to a sick young woman named Radha after encountering her following a gathering with friends on the eve of his wedding. However, his life takes a devastating turn when Radha is later identified as a suspect connected to a violent attack, leading to his arrest.
+              {t('story.synopsis.0')}
             </p>
             <p className="mt-4 leading-7 text-gray-300">
-              As the incident shatters his career, engagement, and family life, Sineth finds himself isolated and struggling to rebuild his future. Determined to uncover the truth, he embarks on a journey to investigate Radha's past, gradually revealing secrets far more complex than he ever imagined.
+              {t('story.synopsis.1')}
             </p>
             <p className="mt-4 leading-7 text-gray-300">
-              Can Sineth prove his innocence, reunite with the woman he loves, and uncover the truth behind Radha's story? Sooriya Sulanga is a gripping action thriller that explores fate, sacrifice, and the unexpected consequences of a single decision.
+              {t('story.synopsis.2')}
             </p>
             <ul className="mt-4 space-y-1 text-sm text-gray-400">
-              <li><strong>{t('story.year')}:</strong> 2024</li>
-              <li><strong>{t('story.runtime')}:</strong> 120 min</li>
-              <li><strong>{t('story.genre')}:</strong> Drama / Thriller</li>
+              <li><strong>{t('story.year')}:</strong> {assets.metadata.year}</li>
+              <li><strong>{t('story.runtime')}:</strong> {assets.metadata.runtime}</li>
+              <li><strong>{t('story.genre')}:</strong> {assets.metadata.genre}</li>
             </ul>
           </div>
 
@@ -257,14 +202,14 @@ export default function Page(){
 
         <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {visibleActors.map((actor) => (
-            <article key={actor.nameKey} className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5">
+            <article key={actor.id} className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5">
               <Image
                 src={actor.image}
-                alt={t(actor.nameKey)}
+                alt={t(`name.${actor.id}`)}
                 className="aspect-[4/5] w-full object-cover"
               />
               <div className="p-4">
-                <h3 className="text-lg font-semibold text-white">{t(actor.nameKey)}</h3>
+                <h3 className="text-lg font-semibold text-white">{t(`name.${actor.id}`)}</h3>
               </div>
             </article>
           ))}
@@ -296,7 +241,7 @@ export default function Page(){
           <div className="overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/5">
             <div className="aspect-square overflow-hidden">
               <Image
-                src={directorPriyantha}
+                src={producerImages['priyantha-colombage']}
                 alt={t('name.priyantha-colombage')}
                 className="h-full w-full object-cover"
               />
@@ -310,7 +255,7 @@ export default function Page(){
           <div className="overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/5">
             <div className="aspect-square overflow-hidden">
               <Image
-                src={producerChammika}
+                src={producerImages['chammika-de-silva']}
                 alt={t('name.chammika-de-silva')}
                 className="h-full w-full object-cover"
               />
@@ -324,7 +269,7 @@ export default function Page(){
           <div className="overflow-hidden rounded-[1.6rem] border border-white/10 bg-white/5">
             <div className="aspect-square overflow-hidden">
               <Image
-                src={producerManisha}
+                src={producerImages['manisha-de-silva']}
                 alt={t('name.manisha-de-silva')}
                 className="h-full w-full object-cover"
               />
@@ -360,7 +305,7 @@ export default function Page(){
           ))}
         </div>
 
-        {gallery.length > 6 && (
+        {galleryImages.length > 6 && (
           <div className="mt-6 flex justify-center">
             <button
               type="button"
@@ -398,8 +343,6 @@ export default function Page(){
           </div>
         </div>
       )}
-
-
 
       <section id="instagram" className="container py-10">
         <div>
@@ -571,13 +514,13 @@ export default function Page(){
       {/* SIDE SOCIAL ICONS */}
       <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3 pr-0">
         <div className="flex flex-col gap-3 bg-black/60 backdrop-blur-xl border border-white/10 rounded-l-2xl py-4 px-2 translate-x-[calc(100%-40px)] hover:translate-x-0 transition-transform duration-300">
-          <a href="https://web.facebook.com/SooriyaSulangaa" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+          <a href={assets.urls.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"
             className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-gray-400 transition hover:bg-[#1877f2]/15 hover:text-[#1877f2]">
             <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
               <path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.2-1.4 1.5-1.4h1.7V4.8c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2v2H8v3.1h2.3V22h3.2z" />
             </svg>
           </a>
-          <a href="https://www.instagram.com/sooriyasulangafilm" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+          <a href={assets.urls.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"
             className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-gray-400 transition hover:bg-gradient-to-br hover:from-[#f58529] hover:via-[#dd2a7b] hover:to-[#8134af] hover:text-white">
             <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
               <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm8.75 1.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z" />
